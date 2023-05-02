@@ -1,6 +1,7 @@
 package com.example.demo.user.controller;
 
 import com.example.demo.configuration.SessionConfig;
+import com.example.demo.user.dto.LoginForm;
 import com.example.demo.user.dto.SignUpForm;
 import com.example.demo.user.dto.User;
 import com.example.demo.user.service.UserService;
@@ -45,14 +46,13 @@ public class UserController {
     @Operation(summary = "로그인")
     @ApiResponse(responseCode = "200", description = "로그인 성공")
     public String login(
-            @RequestParam("email") String email,
-            @RequestParam("password") String password,
+            LoginForm loginForm,
             RedirectAttributes model,
             HttpServletRequest request) {
         log.info("login Post 호출");
 
 
-        User user = userService.login(email, password);
+        User user = userService.login(loginForm);
         model.addFlashAttribute("user", user);
         HttpSession session = request.getSession();
         session.setAttribute(SessionConfig.LOGIN_MEMBER, user);

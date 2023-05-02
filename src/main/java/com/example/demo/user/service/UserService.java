@@ -1,5 +1,6 @@
 package com.example.demo.user.service;
 
+import com.example.demo.user.dto.LoginForm;
 import com.example.demo.user.dto.SignUpForm;
 import com.example.demo.user.dto.User;
 import com.example.demo.user.entity.UserEntity;
@@ -34,9 +35,9 @@ public class UserService {
         return modelMapper.map(savedUserEntity, User.class);
     }
 
-    public User login(String email, String password) {
-        log.info("login tried email: {}, password: {}", email, password);
-        Optional<UserEntity> userEntity = userRepository.findByEmailAndPassword(email, password);
+    public User login(LoginForm loginForm) {
+        log.info("login tried email: {}, password: {}", loginForm.getEmail(), loginForm.getPassword());
+        Optional<UserEntity> userEntity = userRepository.findByEmailAndPassword(loginForm.getEmail(), loginForm.getPassword());
         if (userEntity.isEmpty()) {
             return null;
         }
