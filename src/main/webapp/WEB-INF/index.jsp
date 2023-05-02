@@ -14,7 +14,7 @@
     <a href="/user/login">로그인</a>
 
     <a href="/user/logout">로그아웃</a>
-    <a href="/user/login">프로필</a>
+    <a href="/user/profile">프로필</a>
     <a href="/user/signup">회원가입</a>
 
 </div>
