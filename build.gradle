@@ -20,14 +20,27 @@ repositories {
 }
 
 dependencies {
+	// Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// Swagger docs
+	implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
+
+	// Lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// ModelMapper
+	implementation 'org.modelmapper:modelmapper:3.1.1'
+
+	// JSP
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.71'
 	implementation 'javax.servlet:jstl:1.2'
+
+	// MariaDB
 	implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.3'
 }
 
