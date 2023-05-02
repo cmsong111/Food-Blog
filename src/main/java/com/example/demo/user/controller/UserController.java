@@ -10,16 +10,16 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -45,19 +45,23 @@ public class UserController {
     @PostMapping("/login")
     @Operation(summary = "로그인")
     @ApiResponse(responseCode = "200", description = "로그인 성공")
-    public String login(
-            LoginForm loginForm,
-            RedirectAttributes model,
-            HttpServletRequest request) {
-        log.info("login Post 호출");
+    @ResponseBody
+    public ResponseEntity<Object> Login(@RequestBody LoginForm loginForm, HttpServletRequest request) {
+        log.info("api login Post Requested");
+        HttpSession session = request.getSession();
 
+        if (session.getAttribute(SessionConfig.LOGIN_MEMBER) != null) {
+            session.removeAttribute(SessionConfig.LOGIN_MEMBER);
+        }
 
         User user = userService.login(loginForm);
-        model.addFlashAttribute("user", user);
-        HttpSession session = request.getSession();
-        session.setAttribute(SessionConfig.LOGIN_MEMBER, user);
-        return "redirect:/";
-
+        log.info("user: {}", user);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } else {
+            session.setAttribute(SessionConfig.LOGIN_MEMBER, user);
+            return ResponseEntity.ok(user);
+        }
     }
 
     @GetMapping("/signup")
@@ -72,15 +76,15 @@ public class UserController {
     @PostMapping("/signup")
     @Operation(summary = "회원가입")
     @ApiResponse(responseCode = "200", description = "회원가입 성공")
-    public String signUp(SignUpForm signUpFormDto,
-                         RedirectAttributes model,
-                         HttpServletRequest request) {
+    public ResponseEntity<Object> signUp(@RequestBody SignUpForm signUpFormDto,
+                                         HttpServletRequest request) {
         log.info("signup Post 호출");
-        User user = userService.signUp(signUpFormDto);
-        model.addFlashAttribute("user", user);
         HttpSession session = request.getSession();
+
+        User user = userService.signUp(signUpFormDto);
+
         session.setAttribute(SessionConfig.LOGIN_MEMBER, user);
-        return "redirect:/";
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/logout")

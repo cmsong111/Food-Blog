@@ -4,6 +4,7 @@ import com.example.demo.user.dto.LoginForm;
 import com.example.demo.user.dto.SignUpForm;
 import com.example.demo.user.dto.User;
 import com.example.demo.user.entity.UserEntity;
+import com.example.demo.user.entity.UserRole;
 import com.example.demo.user.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -30,6 +32,7 @@ public class UserService {
         userEntity.setAccountNonExpired(true);
         userEntity.setAccountNonLocked(true);
         userEntity.setCredentialsNonExpired(true);
+        userEntity.setRoles(Collections.singleton(UserRole.USER));
 
         UserEntity savedUserEntity = userRepository.save(userEntity);
         return modelMapper.map(savedUserEntity, User.class);
