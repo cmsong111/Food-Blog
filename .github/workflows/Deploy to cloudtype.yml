@@ -26,9 +26,8 @@ jobs:
             options:
               ports: 8080
               start: java -jar ./build/libs/demo-0.0.1-SNAPSHOT.war
-              jarfile: ""
               build: ./gradlew clean build
-              strategy: rolling
+              strategy: recreate
               env:
                 - name: DB_HOST
                   value: mariadb
