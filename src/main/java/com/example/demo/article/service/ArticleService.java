@@ -19,5 +19,18 @@ public class ArticleService {
         this.articleLikeRepository = articleLikeRepository;
     }
 
+    // TODO: Add Article business logic methods
+
+    // TODO: Delete Article business logic methods
+
+    // TODO: Read Article business logic methods
+
+    // TODO: Add Reply business logic methods
+
+    // TODO: Add ArticleLike business logic methods
+
+    // TODO: Image upload business logic methods
+
+    // TODO: Article search business logic methods
 
 }
