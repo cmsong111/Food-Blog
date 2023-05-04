@@ -46,4 +46,9 @@ public class UserService {
         log.info("login success {}" , userEntity.get().toString());
         return modelMapper.map(userEntity, UserDto.class);
     }
+
+    public UserDto findById(String id){
+        log.info("회원 정보 요청");
+        return modelMapper.map(userRepository.findById(id),UserDto.class);
+    }
 }

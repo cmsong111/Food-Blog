@@ -101,6 +101,7 @@ public class UserController {
         log.info("profilePage GET 호출");
         HttpSession session = request.getSession();
         UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
+        user = userService.findById(user.getEmail());
         model.addAttribute("user", user);
         return "profile";
     }
