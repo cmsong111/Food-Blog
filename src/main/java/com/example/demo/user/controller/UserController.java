@@ -3,7 +3,7 @@ package com.example.demo.user.controller;
 import com.example.demo.configuration.SessionConfig;
 import com.example.demo.user.dto.LoginForm;
 import com.example.demo.user.dto.SignUpForm;
-import com.example.demo.user.dto.User;
+import com.example.demo.user.dto.UserDto;
 import com.example.demo.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -15,11 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -54,7 +52,7 @@ public class UserController {
             session.removeAttribute(SessionConfig.LOGIN_MEMBER);
         }
 
-        User user = userService.login(loginForm);
+        UserDto user = userService.login(loginForm);
         log.info("user: {}", user);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -65,10 +63,10 @@ public class UserController {
     }
 
     @GetMapping("/signup")
-    @Operation(summary = "회원가입 페이지")
+    @Operation(summary = "회원가입 페이지 요청")
     @ApiResponse(responseCode = "200", description = "회원가입 페이지")
     public String signUpPage() {
-        log.info("signUpPage GET requested");
+        log.info("signUpPage Get requested");
         return "signup";
     }
 
@@ -81,7 +79,7 @@ public class UserController {
         log.info("signup Post 호출");
         HttpSession session = request.getSession();
 
-        User user = userService.signUp(signUpFormDto);
+        UserDto user = userService.signUp(signUpFormDto);
 
         session.setAttribute(SessionConfig.LOGIN_MEMBER, user);
         return ResponseEntity.ok(user);
@@ -102,7 +100,7 @@ public class UserController {
     public String profilePage(Model model, HttpServletRequest request) {
         log.info("profilePage GET 호출");
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute(SessionConfig.LOGIN_MEMBER);
+        UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
         model.addAttribute("user", user);
         return "profile";
     }

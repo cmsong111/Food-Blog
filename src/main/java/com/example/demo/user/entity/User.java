@@ -1,6 +1,6 @@
 package com.example.demo.user.entity;
 
-import com.example.demo.article.entity.ArticleEntity;
+import com.example.demo.article.entity.Article;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
-public class UserEntity implements UserDetails {
+public class User implements UserDetails {
     @Id
     private String email;
     private String password;
@@ -31,7 +31,7 @@ public class UserEntity implements UserDetails {
     private boolean credentialsNonExpired;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<ArticleEntity> articles;
+    private List<Article> articles;
 
 
     @Enumerated(value = EnumType.STRING)

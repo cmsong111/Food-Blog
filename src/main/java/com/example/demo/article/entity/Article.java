@@ -1,29 +1,32 @@
 package com.example.demo.article.entity;
 
-import com.example.demo.user.entity.UserEntity;
+import com.example.demo.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArticleEntity {
+public class Article {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String content;
     @ManyToOne(fetch = FetchType.LAZY)
-    private UserEntity author;
+    private User author;
     private Timestamp createTime;
     private Timestamp updateTime;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Reply> reply;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ArticleLike> like;
 }
