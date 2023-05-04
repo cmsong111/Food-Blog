@@ -97,11 +97,11 @@ public class UserController {
     @GetMapping("/profile")
     @Operation(summary = "프로필 페이지")
     @ApiResponse(responseCode = "200", description = "프로필 페이지")
-    public String profilePage(Model model, HttpServletRequest request) {
+    public String profilePage(Model model, HttpSession session) {
         log.info("profilePage GET 호출");
-        HttpSession session = request.getSession();
+
         UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
-        user = userService.findById(user.getEmail());
+        log.info("user: {}", user);
         model.addAttribute("user", user);
         return "profile";
     }

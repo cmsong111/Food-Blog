@@ -11,8 +11,7 @@ function login() {
         contentType: "application/json",
         data: JSON.stringify(data),
         dataType: "json",
-        success: function(data) {
-            alert("로그인 성공");
+        success: function() {
             location.href = "/";
         },
         error: function(xhr, textStatus, errorThrown) {
@@ -44,7 +43,7 @@ function register() {
         contentType: "application/json",
         data: JSON.stringify(data),
         dataType: "json",
-        success: function(data) {
+        success: function() {
             alert("로그인 성공");
             location.href = "/";
         },
