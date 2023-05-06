@@ -18,5 +18,5 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ArticleForm {
     public String title;
     public String content;
-    private Map<AttachmentType, List<MultipartFile>> attachmentFiles = new ConcurrentHashMap<>();
+    //private Map<AttachmentType, List<MultipartFile>> attachmentFiles = new ConcurrentHashMap<>();
 }
