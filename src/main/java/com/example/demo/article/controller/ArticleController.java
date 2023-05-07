@@ -2,6 +2,7 @@ package com.example.demo.article.controller;
 
 import com.example.demo.article.dto.ArticleForm;
 import com.example.demo.article.dto.ArticleInfo;
+import com.example.demo.article.dto.ReplyDto;
 import com.example.demo.article.service.ArticleService;
 import com.example.demo.configuration.SessionConfig;
 import com.example.demo.user.dto.UserDto;
@@ -74,4 +75,20 @@ public class ArticleController {
         return ResponseEntity.status(HttpStatus.CREATED).body(gson.toJson(savedArticle));
     }
 
+    @PostMapping("/api/articles/{id}/reply")
+    @Operation(summary = "댓글 작성")
+    @ApiResponse(responseCode = "201", description = "댓글 작성 성공")
+    public ResponseEntity<Object> createReply(
+            @PathVariable("id") Long id,
+            @RequestBody ReplyDto reply,
+            HttpSession session
+    ) {
+        UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
+        if (user == null) {
+            log.info("user is null");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        log.info("reply: {}", reply);
+        return ResponseEntity.status(HttpStatus.CREATED).body(articleService.addReply(id, reply, user));
+    }
 }

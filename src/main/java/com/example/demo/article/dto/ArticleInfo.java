@@ -15,6 +15,6 @@ public class ArticleInfo {
     public UserDto author;
     public Timestamp createTime;
     public Timestamp updateTime;
-    public List<Reply> reply;
+    public List<ReplyDto> reply;
     public long likeCount;
 }

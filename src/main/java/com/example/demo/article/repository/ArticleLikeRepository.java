@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ArticleLikeRepository extends JpaRepository<ArticleLike, Long> {
+    long countByArticle_Id(Long id);
+
 }

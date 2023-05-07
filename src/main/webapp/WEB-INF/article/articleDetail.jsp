@@ -19,11 +19,13 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
             crossorigin="anonymous"></script>
+    <script src="<c:url value="/resources/js/reply.js"/>"></script>
 </head>
 <body>
 <%@ include file="../widget/nav.jsp" %>
 <%--made with bootstap article blog show page , and data will add by model--%>
 <!-- Page content-->
+<input type="hidden" name="article-id" id="article-id" value="${article.id}">
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-8">
@@ -42,7 +44,7 @@
                 <!-- Preview image figure-->
                 <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..."/></figure>
                 <!-- Post content-->
-                <section class="mb-5">`
+                <section class="mb-5">
                     <p class="fs-5 mb-4">${article.content}</p>
                 </section>
             </article>
@@ -51,48 +53,27 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <!-- Comment form-->
-                        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+                        <form class="mb-4"><textarea class="form-control" name="reply-content" id = "reply-content" rows="3" placeholder="Join the discussion and leave a comment!" onkeydown='mykeydown()'></textarea>
                         </form>
-                        <!-- Comment with nested comments-->
-                        <div class="d-flex mb-4">
-                            <!-- Parent comment-->
-                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."/>
-                            </div>
-                            <div class="ms-3">
-                                <div class="fw-bold">Commenter Name</div>
-                                If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the
-                                space frontier is dangerous, and it's expensive, and it has unquantified risks.
-                                <!-- Child comment 1-->
-                                <div class="d-flex mt-4">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                                                                    alt="..."/></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get
-                                        investors.
-                                    </div>
-                                </div>
-                                <!-- Child comment 2-->
-                                <div class="d-flex mt-4">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                                                                    alt="..."/></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        When you put money directly to a problem, it makes a good headline.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <!-- Single comment-->
-                        <div class="d-flex">
-                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."/>
+                        <c:forEach items="${article.reply}" var="reply">
+                            <div class="d-flex mb-4">
+                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."/>
+                                </div>
+                                <div class="ms-3">
+                                    <div class="fw-bold">${reply.user.nickname}</div>
+                                    ${reply.content}
+                                </div>
                             </div>
-                            <div class="ms-3">
-                                <div class="fw-bold">Commenter Name</div>
-                                When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with
-                                statements of beneficence.
-                            </div>
-                        </div>
+                        </c:forEach>
+<%--                        <div class="d-flex">--%>
+<%--                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."/>--%>
+<%--                            </div>--%>
+<%--                            <div class="ms-3">--%>
+<%--                                <div class="fw-bold">Commenter Name</div>--%>
+<%--                                ${article.reply.toString()}--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
             </section>
