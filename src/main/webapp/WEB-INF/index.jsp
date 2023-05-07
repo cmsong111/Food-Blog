@@ -13,7 +13,23 @@
 <body>
 <%@ include file="widget/nav.jsp" %>
 
-<h1>인스타그램</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <c:forEach items="${articles}" var="article">
+            <div class="col-lg-6 mb-4">
+                <div class="card" onclick="">
+                    <img src="https://picsum.photos/400/300" class="card-img-top w-70" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${article.title}</h5>
+                        <p class="card-text">${article.content}</p>
+                        <a href="/article/${article.id}" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+</div>
+
 
 
 </body>

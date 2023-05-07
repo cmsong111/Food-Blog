@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -56,6 +58,16 @@ public class ArticleService {
             articleInfo.getReply().add(modelMapper.map(reply, ReplyDto.class));
         });
         return articleInfo;
+    }
+
+    public List<ArticleInfo> getAllArticlesSortByCreated(){
+        List<Article> articles = articleRepository.findAll();
+        articles.sort((a1, a2) -> a2.getCreateTime().compareTo(a1.getCreateTime()));
+        List<ArticleInfo> articleInfos = new ArrayList<>();
+        articles.forEach(article -> {
+            articleInfos.add(modelMapper.map(article, ArticleInfo.class));
+        });
+        return articleInfos;
     }
 
     // TODO: Add Reply business logic methods

@@ -34,6 +34,7 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
+
     @GetMapping("/{id}")
     @Operation(summary = "게시글 상세보기 페이지 요청")
     public String getArticleDetail(
