@@ -4,6 +4,7 @@
 <html lang="ko">
 <head>
     <title>인스타그램</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -12,25 +13,24 @@
 </head>
 <body>
 <%@ include file="widget/nav.jsp" %>
-
 <div class="container">
-    <div class="row justify-content-center">
-        <c:forEach items="${articles}" var="article">
-            <div class="col-lg-6 mb-4">
-                <div class="card" onclick="">
-                    <img src="https://picsum.photos/400/300" class="card-img-top w-70" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${article.title}</h5>
-                        <p class="card-text">${article.content}</p>
-                        <a href="/article/${article.id}" class="btn btn-primary">Go somewhere</a>
+    <div class="col-10 offset-1">
+        <div class="row row-cols-md-2 g-4 justify-content-center">
+            <c:forEach items="${articles}" var="article">
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="https://picsum.photos/400/300" class="card-img-top w-70" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${article.title}</h5>
+                            <p class="card-text">${article.content}</p>
+                            <a href="/article/${article.id}" class="btn btn-primary">Go somewhere</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </c:forEach>
+            </c:forEach>
+        </div>
     </div>
 </div>
-
-
 
 </body>
 </html>
