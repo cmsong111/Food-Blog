@@ -10,3 +10,4 @@ values ('title1', 'content1', 'test1@test.com', CURRENT_TIMESTAMP,CURRENT_TIMEST
        ('title2', 'content2', 'test1@test.com', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
        ('title3', 'content3', 'test1@test.com', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
        ('title4', 'content4', 'test1@test.com', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+

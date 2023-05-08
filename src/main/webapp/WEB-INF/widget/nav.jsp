@@ -4,6 +4,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="/">Instagram</a>
@@ -23,6 +24,9 @@
                         </li>
                     </c:when>
                     <c:otherwise>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/chat">Chatting</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/article/post">Post Article</a>
                         </li>
