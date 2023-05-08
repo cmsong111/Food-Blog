@@ -1,4 +1,4 @@
-ame: Deploy to cloudtype
+name: Deploy to cloudtype
 on:
   push:
     branches:
@@ -28,19 +28,6 @@ jobs:
               start: java -jar ./build/libs/demo-0.0.1-SNAPSHOT.war
               build: ./gradlew clean build
               strategy: recreate
-              env:
-                - name: DB_HOST
-                  value: mariadb
-                - name: DB_PORT
-                  value: "3306"
-                - name: DB_NAME
-                  value: instagram
-                - name: DB_USER
-                  value: root
-                - name: DB_PASSWORD
-                  secret: mariadb-root-password
-                - name: DDL_MODE
-                  value: create
             context:
               git:
                 url: git@github.com:${{ github.repository }}.git
