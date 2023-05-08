@@ -44,7 +44,7 @@ function register() {
         data: JSON.stringify(data),
         dataType: "json",
         success: function() {
-            alert("로그인 성공");
+            alert("회원가입 및 로그인 성공");
             location.href = "/";
         },
         error: function(xhr, textStatus, errorThrown) {
