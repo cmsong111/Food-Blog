@@ -61,7 +61,7 @@
                     <div class="card-body">
                         <!-- Comment form-->
                         <form class="mb-4"><textarea class="form-control" name="reply-content" id="reply-content" rows="3"
-                                                     placeholder="Join the discussion and leave a comment!" onkeydown='mykeydown()'></textarea>
+                                                     placeholder="댓글 입력 후 엔터(줄바꿈) 누르면 작성됩니다." onkeydown='mykeydown()'></textarea>
                         </form>
                         <!-- Single comment-->
                         <c:forEach items="${article.reply}" var="reply">
