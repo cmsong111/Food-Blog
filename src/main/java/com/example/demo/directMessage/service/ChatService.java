@@ -4,7 +4,6 @@ import com.example.demo.directMessage.dto.ChatRoomDto;
 import com.example.demo.directMessage.entity.ChatRoom;
 import com.example.demo.directMessage.repository.ChatMessageRepository;
 import com.example.demo.directMessage.repository.ChatRoomRepository;
-import com.example.demo.user.dto.UserDto;
 import com.example.demo.user.entity.User;
 import com.example.demo.user.repository.UserRepository;
 import org.modelmapper.ModelMapper;

@@ -1,15 +1,9 @@
 package com.example.demo.article.dto;
 
-import com.example.demo.article.AttachmentType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Data
 @NoArgsConstructor
