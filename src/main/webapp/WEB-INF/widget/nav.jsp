@@ -1,5 +1,5 @@
-<%@ page import="com.example.demo.user.dto.UserDto" %>
-<%@ page import="com.example.demo.configuration.SessionConfig" %>
+<%@ page import="com.classy.instagram.user.dto.UserDto" %>
+<%@ page import="com.classy.instagram.configuration.SessionConfig" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 
