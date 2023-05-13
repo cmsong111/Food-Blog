@@ -43,6 +43,7 @@
             <br>
         </form>
         <button class="w-100 btn btn-lg btn-primary" onclick="login()">로그인</button>
+        <br><br>
         <a href="signup">회원가입</a>
     </div>
 </div>

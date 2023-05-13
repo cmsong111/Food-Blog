@@ -30,42 +30,44 @@
 <!-- Responsive navbar-->
 <%@ include file="widget/nav.jsp" %>
 <!-- Page content-->
-<div class="container">
-    <div class="text-center mt-5">
-        <form>
-            <div class="form-floating">
-                <input type="email" class="form-control" id="email" name="email" placeholder="이메일 입력...">
-                <label for="email">이메일</label>
-            </div>
-            <br>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                <label for="password">비밀번호</label>
-            </div>
-            <br>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="password_re" name="password_re" placeholder="password_re">
-                <label for="password_re">비밀번호 재입력</label>
-            </div>
-            <br>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="username" name="username" placeholder="username">
-                <label for="username">이름</label>
-            </div>
-            <br>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="nickname" name="nickname" placeholder="nickname">
-                <label for="nickname">별명</label>
-            </div>
-            <br>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="pictureUrl" name="pictureUrl" placeholder="pictureUrl">
-                <label for="pictureUrl">유저 이미지</label>
-            </div>
-            <br>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <form>
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="이메일 입력...">
+                    <label for="email">이메일</label>
+                </div>
+                <br>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    <label for="password">비밀번호</label>
+                </div>
+                <br>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password_re" name="password_re" placeholder="password_re">
+                    <label for="password_re">비밀번호 재입력</label>
+                </div>
+                <br>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="username">
+                    <label for="username">이름</label>
+                </div>
+                <br>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="nickname" name="nickname" placeholder="nickname">
+                    <label for="nickname">별명</label>
+                </div>
+                <br>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="pictureUrl" name="pictureUrl" placeholder="pictureUrl">
+                    <label for="pictureUrl">유저 이미지</label>
+                </div>
+                <br>
 
-        </form>
-        <button class="w-100 btn btn-lg btn-primary" onclick="register()">회원가입</button>
+            </form>
+            <button class="w-100 btn btn-lg btn-primary" onclick="register()">회원가입</button>
+        </div>
     </div>
 </div>
 
