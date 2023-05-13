@@ -36,15 +36,14 @@ function postArticle() {
 function deleteArticle(id){
     $.ajax({
         type: "DELETE",
-        url: "/article/reply/" + id,
+        url: "/article/" + id,
         statusCode: {
             204: function () {
-                alert("댓글이 삭제되었습니다.");
+                alert("게시글이 삭제 되었습니다.");
                 window.location.href = "/";
             },
             400: handle400,
             401: handle401
-
         }
     });
 }

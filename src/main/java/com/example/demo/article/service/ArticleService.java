@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -51,10 +52,19 @@ public class ArticleService {
     // TODO: Delete Article business logic methods
     @Transactional
     public void deleteArticle(Long id, UserDto userDto) throws Exception {
-        if (!articleRepository.findById(id).orElseThrow().getAuthor().getEmail().equals(userDto.getEmail())) {
+        Optional<Article> optinalArticle = articleRepository.findById(id);
+        if (optinalArticle.isEmpty()) {
+            throw new Exception("article not found");
+        }
+        Article article = optinalArticle.get();
+        if (!article.getAuthor().getEmail().equals(userDto.getEmail())) {
             throw new Exception("only author can delete article");
         }
-        articleRepository.deleteById(id);
+
+        List<Reply> replies = replyRepository.findByArticle_Id(id);
+        replyRepository.deleteAll(replies); // 연관된 댓글 삭제
+
+        articleRepository.delete(article);
     }
 
     public ArticleInfo getArticle(Long id) {
@@ -109,7 +119,6 @@ public class ArticleService {
 
     // TODO: Add ArticleLike business logic methods
 
-    // TODO: Image upload business logic methods
 
     // TODO: Article search business logic methods
 
