@@ -20,6 +20,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
             crossorigin="anonymous"></script>
     <script src="<c:url value="/resources/js/reply.js"/>"></script>
+    <script src="<c:url value="/resources/js/article.js"/>"></script>
 </head>
 <body>
 <%@ include file="../widget/nav.jsp" %>
@@ -35,6 +36,12 @@
                 <header class="mb-4">
                     <!-- Post title-->
                     <h1 class="fw-bolder mb-1">${article.title}</h1>
+                    <c:if test="${article.author.email == sessionScope.loginMember.email}">
+                        <button class="btn btn-link text-decoration-none text-primary p-0" onclick="editArticle()">Edit</button>
+                        <button class="btn btn-link text-decoration-none text-danger p-0" onclick="deleteArticle(${article.id})">Delete</button>
+                    </c:if>
+
+
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">Posted on ${article.title} by ${article.author.username}</div>
                     <!-- Post categories-->
@@ -58,24 +65,25 @@
                         </form>
                         <!-- Single comment-->
                         <c:forEach items="${article.reply}" var="reply">
-                            <div class="d-flex mb-4">
-                                <div class="flex-shrink-0"><img class="rounded-circle" src="${reply.user.imageUrl}" width="50px" height="50px"
-                                                                alt="..."/>
-                                </div>
-                                <div class="ms-3">
-                                    <div class="fw-bold">${reply.user.nickname}</div>
-                                        ${reply.content}
+                            <div class="d-flex mb-4 justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="${reply.user.imageUrl}" width="50px" height="50px" alt="...">
+                                    <div class="ms-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="fw-bold me-2">${reply.user.nickname}</div>
+                                            <div class="text-muted me-2">${reply.createTime}</div>
+                                            <c:if test="${reply.user.email == sessionScope.loginMember.email}">
+                                                <button class="btn btn-link text-decoration-none text-danger p-0" onclick="deleteReply(${reply.id})">
+                                                    Delete
+                                                </button>
+                                            </c:if>
+                                        </div>
+
+                                        <div>${reply.content}</div>
+                                    </div>
                                 </div>
                             </div>
                         </c:forEach>
-                        <%--                        <div class="d-flex">--%>
-                        <%--                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."/>--%>
-                        <%--                            </div>--%>
-                        <%--                            <div class="ms-3">--%>
-                        <%--                                <div class="fw-bold">Commenter Name</div>--%>
-                        <%--                                ${article.reply.toString()}--%>
-                        <%--                            </div>--%>
-                        <%--                        </div>--%>
                     </div>
                 </div>
             </section>

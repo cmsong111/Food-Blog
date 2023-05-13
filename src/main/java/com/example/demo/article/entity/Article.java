@@ -26,8 +26,8 @@ public class Article {
     private Timestamp createTime;
     private Timestamp updateTime;
     private String pictureUrl;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reply> reply;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ArticleLike> like;
 }

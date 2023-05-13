@@ -31,3 +31,19 @@ function createReply() {
         }
     });
 }
+
+function deleteReply(replyId){
+    $.ajax({
+        type: "DELETE",
+        url: "/article/reply/" + replyId,
+        statusCode: {
+            204: function () {
+                alert("댓글이 삭제되었습니다.");
+                window.location.reload();
+            },
+            400: handle400,
+            401: handle401
+
+        }
+    });
+}

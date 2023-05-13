@@ -25,5 +25,4 @@ public class Reply {
     private User user;
     private Timestamp createTime;
     private Timestamp updateTime;
-
 }
