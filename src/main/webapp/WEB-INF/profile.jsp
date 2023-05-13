@@ -48,18 +48,14 @@
 <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5 mt-5">
         <h2 class="fw-bolder mb-4">Posted articles</h2>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-3  justify-content-center">
             <c:forEach items="${userArticles}" var="article">
                 <div class="col mb-5" onclick="window.location.href='/article/${article.id}'">
                     <div class="card h-100">
-                        <!-- Product image-->
                         <img class="card-img-top" src="${article.pictureUrl}" height="200" width="450" alt="..." style="cursor:pointer"/>
-                        <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
-                                <!-- Product name-->
                                 <h5 class="fw-bolder">${article.title}</h5>
-                                <!-- Product price-->
                                     ${article.content}
                             </div>
                         </div>
@@ -69,6 +65,5 @@
         </div>
     </div>
 </section>
-
 </body>
 </html>

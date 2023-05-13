@@ -26,7 +26,7 @@
 <div id="chat-page" class="hidden">
     <div class="chat-container">
         <div class="chat-header">
-            <h2>Spring WebSocket Chat Demo</h2>
+            <h2>전체 채팅방</h2>
         </div>
         <div class="connecting">
             연결중...

@@ -14,8 +14,8 @@
 <body>
 <%@ include file="widget/nav.jsp" %>
 <div class="container">
-    <div class="col-12 col-md-10 offset-md-1">
-        <div class="row row-cols-md-2 g-4 justify-content-center">
+    <div class="col-12  col-md-10 offset-md-1">
+        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
             <c:forEach items="${articles}" var="article">
                 <div class="col">
                     <div class="card h-100" onclick="window.location.href='/article/${article.id}'" style="cursor:pointer">
