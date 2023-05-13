@@ -1,5 +1,7 @@
 package com.example.demo.user.controller;
 
+import com.example.demo.article.dto.ArticleInfo;
+import com.example.demo.article.service.ArticleService;
 import com.example.demo.configuration.SessionConfig;
 import com.example.demo.user.dto.LoginForm;
 import com.example.demo.user.dto.SignUpForm;
@@ -9,6 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Fetch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -26,10 +30,12 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     private final UserService userService;
+    private final ArticleService articleService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, ArticleService articleService) {
         this.userService = userService;
+        this.articleService = articleService;
     }
 
     @GetMapping("/login")
@@ -94,15 +100,53 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/profile")
+    @GetMapping("/profile/{email}")
     @Operation(summary = "프로필 페이지")
     @ApiResponse(responseCode = "200", description = "프로필 페이지")
-    public String profilePage(Model model, HttpSession session) {
+    public String profilePage(Model model, HttpSession session, @PathVariable String email) {
         log.info("profilePage GET 호출");
 
-        UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
-        log.info("user: {}", user);
+        UserDto user = userService.findById(email);
+        List<ArticleInfo> userArticles = articleService.getArticlesByEmail(user.getEmail());
+
         model.addAttribute("user", user);
+        model.addAttribute("userArticles", userArticles);
         return "profile";
+    }
+
+    @GetMapping("/profile/edit")
+    @Operation(summary = "프로필 수정 페이지 요청")
+    @ApiResponse(responseCode = "200", description = "프로필 수정 페이지")
+    public String profileEditPage(Model model, HttpSession session) {
+        log.info("profileEditPage GET 호출");
+
+        UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
+        model.addAttribute("user", user);
+        return "userEditForm";
+    }
+
+    @PatchMapping("/profile/edit")
+    @Operation(summary = "프로필 수정")
+    @ApiResponse(responseCode = "200", description = "프로필 수정 성공")
+    public ResponseEntity<Object> profileEdit(@RequestBody UserDto userDto, HttpSession session) {
+        log.info("profileEditPage PATCH 호출");
+        log.info("입려된 유저 정보: {}", userDto);
+
+        // Session 과 UserDto 를 비교해서 같은지 확인
+        UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
+
+        if (user == null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        if (!user.getEmail().equals(userDto.getEmail())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
+        UserDto saved  =  userService.update(userDto);
+        log.info("saved: {}", saved);
+
+        session.setAttribute(SessionConfig.LOGIN_MEMBER, saved);
+        log.info("session: {}", session.getAttribute(SessionConfig.LOGIN_MEMBER));
+        return ResponseEntity.ok(saved);
     }
 }

@@ -58,6 +58,12 @@
                 <label for="nickname">별명</label>
             </div>
             <br>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="pictureUrl" name="pictureUrl" placeholder="pictureUrl">
+                <label for="pictureUrl">유저 이미지</label>
+            </div>
+            <br>
+
         </form>
         <button class="w-100 btn btn-lg btn-primary" onclick="register()">회원가입</button>
     </div>

@@ -31,7 +31,7 @@
                             <a class="nav-link" href="/article/post">Post Article</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/user/profile">User Info</a>
+                            <a class="nav-link" href="/user/profile/${sessionScope.loginMember.email}">User Info</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/user/logout">Logout</a>

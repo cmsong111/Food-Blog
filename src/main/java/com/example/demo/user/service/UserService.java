@@ -33,6 +33,7 @@ public class UserService {
         userEntity.setCredentialsNonExpired(true);
         userEntity.setRoles(Collections.singleton(UserRole.USER));
 
+
         User savedUserEntity = userRepository.save(userEntity);
         return modelMapper.map(savedUserEntity, UserDto.class);
     }
@@ -50,5 +51,11 @@ public class UserService {
     public UserDto findById(String id){
         log.info("회원 정보 요청");
         return modelMapper.map(userRepository.findById(id),UserDto.class);
+    }
+
+    public UserDto update(UserDto userDto){
+        log.info("회원 정보 수정");
+        User user = modelMapper.map(userDto,User.class);
+        return modelMapper.map(userRepository.save(user),UserDto.class);
     }
 }

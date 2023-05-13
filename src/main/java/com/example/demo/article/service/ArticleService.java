@@ -91,6 +91,23 @@ public class ArticleService {
         return modelMapper.map(replyRepository.save(reply), ReplyDto.class);
     }
 
+    /**
+     * get article arrayList search by user email
+     *
+     * @param email user email
+     * @return article arrayList
+     */
+    public List<ArticleInfo> getArticlesByEmail(String email) {
+        List<Article> articles = articleRepository.findByAuthor_EmailOrderByCreateTimeDesc(email);
+        List<ArticleInfo> articleInfos = new ArrayList<>();
+        articles.forEach(article -> {
+            if (article.getContent().length() > 30) article.setContent(article.getContent().substring(0, 30) + "...");
+            articleInfos.add(modelMapper.map(article, ArticleInfo.class));
+        });
+        return articleInfos;
+    }
+
+
     // TODO: Add ArticleLike business logic methods
 
     // TODO: Image upload business logic methods
@@ -106,7 +123,6 @@ public class ArticleService {
      * @throws Exception if userDto is not the author of the reply
      * @author 김남주
      */
-    @Transactional
     public void deleteReply(Long replyIdx, UserDto userDto) throws Exception {
         Reply reply = replyRepository.findById(replyIdx).orElseThrow();
         if (!reply.getUser().getEmail().equals(userDto.getEmail())) {

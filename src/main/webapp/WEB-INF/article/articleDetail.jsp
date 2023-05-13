@@ -28,7 +28,7 @@
 <!-- Page content-->
 <input type="hidden" name="article-id" id="article-id" value="${article.id}">
 <div class="container mt-5">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-lg-8">
             <!-- Post content-->
             <article>
@@ -70,7 +70,7 @@
                                     <img class="rounded-circle" src="${reply.user.imageUrl}" width="50px" height="50px" alt="...">
                                     <div class="ms-3">
                                         <div class="d-flex align-items-center">
-                                            <div class="fw-bold me-2">${reply.user.nickname}</div>
+                                            <div class="fw-bold me-2" style="cursor:pointer" onclick="window.location.href='/user/profile/${reply.user.email}'">${reply.user.nickname}</div>
                                             <div class="text-muted me-2">${reply.createTime}</div>
                                             <c:if test="${reply.user.email == sessionScope.loginMember.email}">
                                                 <button class="btn btn-link text-decoration-none text-danger p-0" onclick="deleteReply(${reply.id})">
@@ -88,49 +88,49 @@
                 </div>
             </section>
         </div>
-        <!-- Side widgets-->
-        <div class="col-lg-4">
-            <!-- Search widget-->
-            <div class="card mb-4">
-                <div class="card-header">Search</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..."
-                               aria-describedby="button-search"/>
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Web Design</a></li>
-                                <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">Freebies</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">JavaScript</a></li>
-                                <li><a href="#!">CSS</a></li>
-                                <li><a href="#!">Tutorials</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Side widget-->
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5
-                    card component!
-                </div>
-            </div>
-        </div>
+<%--        <!-- Side widgets-->--%>
+<%--        <div class="col-lg-4">--%>
+<%--            <!-- Search widget-->--%>
+<%--            <div class="card mb-4">--%>
+<%--                <div class="card-header">Search</div>--%>
+<%--                <div class="card-body">--%>
+<%--                    <div class="input-group">--%>
+<%--                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..."--%>
+<%--                               aria-describedby="button-search"/>--%>
+<%--                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <!-- Categories widget-->--%>
+<%--            <div class="card mb-4">--%>
+<%--                <div class="card-header">Categories</div>--%>
+<%--                <div class="card-body">--%>
+<%--                    <div class="row">--%>
+<%--                        <div class="col-sm-6">--%>
+<%--                            <ul class="list-unstyled mb-0">--%>
+<%--                                <li><a href="#!">Web Design</a></li>--%>
+<%--                                <li><a href="#!">HTML</a></li>--%>
+<%--                                <li><a href="#!">Freebies</a></li>--%>
+<%--                            </ul>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-sm-6">--%>
+<%--                            <ul class="list-unstyled mb-0">--%>
+<%--                                <li><a href="#!">JavaScript</a></li>--%>
+<%--                                <li><a href="#!">CSS</a></li>--%>
+<%--                                <li><a href="#!">Tutorials</a></li>--%>
+<%--                            </ul>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <!-- Side widget-->--%>
+<%--            <div class="card mb-4">--%>
+<%--                <div class="card-header">Side Widget</div>--%>
+<%--                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5--%>
+<%--                    card component!--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
     </div>
 </div>
 
