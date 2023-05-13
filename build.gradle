@@ -41,7 +41,7 @@ dependencies {
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.71'
 	implementation 'javax.servlet:jstl:1.2'
 
-	// MariaDB
+	// H2 Database
 	implementation 'com.h2database:h2:2.1.214'
 
 	//Json converter

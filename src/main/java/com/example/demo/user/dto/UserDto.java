@@ -17,6 +17,7 @@ public class UserDto {
     private String password;
     private String username;
     private String nickname;
+    private String imageUrl;
     private boolean enabled;
     private boolean accountNonExpired;
     private boolean accountNonLocked;

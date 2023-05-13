@@ -38,11 +38,11 @@
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">Posted on ${article.title} by ${article.author.username}</div>
                     <!-- Post categories-->
-<%--                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>--%>
-<%--                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>--%>
+                    <%--                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>--%>
+                    <%--                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>--%>
                 </header>
                 <!-- Preview image figure-->
-                <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..."/></figure>
+                <figure class="mb-4"><img class="img-fluid rounded" src="${article.pictureUrl}" alt="..."/></figure>
                 <!-- Post content-->
                 <section class="mb-5">
                     <p class="fs-5 mb-4">${article.content}</p>
@@ -53,27 +53,29 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <!-- Comment form-->
-                        <form class="mb-4"><textarea class="form-control" name="reply-content" id = "reply-content" rows="3" placeholder="Join the discussion and leave a comment!" onkeydown='mykeydown()'></textarea>
+                        <form class="mb-4"><textarea class="form-control" name="reply-content" id="reply-content" rows="3"
+                                                     placeholder="Join the discussion and leave a comment!" onkeydown='mykeydown()'></textarea>
                         </form>
                         <!-- Single comment-->
                         <c:forEach items="${article.reply}" var="reply">
                             <div class="d-flex mb-4">
-                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."/>
+                                <div class="flex-shrink-0"><img class="rounded-circle" src="${reply.user.imageUrl}" width="50px" height="50px"
+                                                                alt="..."/>
                                 </div>
                                 <div class="ms-3">
                                     <div class="fw-bold">${reply.user.nickname}</div>
-                                    ${reply.content}
+                                        ${reply.content}
                                 </div>
                             </div>
                         </c:forEach>
-<%--                        <div class="d-flex">--%>
-<%--                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."/>--%>
-<%--                            </div>--%>
-<%--                            <div class="ms-3">--%>
-<%--                                <div class="fw-bold">Commenter Name</div>--%>
-<%--                                ${article.reply.toString()}--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
+                        <%--                        <div class="d-flex">--%>
+                        <%--                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."/>--%>
+                        <%--                            </div>--%>
+                        <%--                            <div class="ms-3">--%>
+                        <%--                                <div class="fw-bold">Commenter Name</div>--%>
+                        <%--                                ${article.reply.toString()}--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
                     </div>
                 </div>
             </section>

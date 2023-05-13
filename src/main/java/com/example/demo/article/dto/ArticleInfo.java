@@ -2,7 +2,9 @@ package com.example.demo.article.dto;
 
 import com.example.demo.article.entity.Reply;
 import com.example.demo.user.dto.UserDto;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -17,4 +19,6 @@ public class ArticleInfo {
     public Timestamp updateTime;
     public List<ReplyDto> reply;
     public long likeCount;
+    public String pictureUrl;
+
 }

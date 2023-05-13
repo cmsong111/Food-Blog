@@ -12,7 +12,8 @@ const handle401 = function (data) {
 function postArticle() {
     const data = {
         title: $("#title").val(),
-        content: $("#content").val()
+        content: $("#content").val(),
+        pictureUrl: $("#pictureUrl").val()
     };
 
     $.ajax({

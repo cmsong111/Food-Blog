@@ -17,4 +17,5 @@ public class SignUpForm {
     private String password;
     private String username;
     private String nickname;
+    private String imageUrl;
 }

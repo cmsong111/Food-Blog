@@ -65,6 +65,7 @@ public class ArticleService {
         articles.sort((a1, a2) -> a2.getCreateTime().compareTo(a1.getCreateTime()));
         List<ArticleInfo> articleInfos = new ArrayList<>();
         articles.forEach(article -> {
+            if (article.getContent().length() > 50) article.setContent(article.getContent().substring(0, 50) + "...");
             articleInfos.add(modelMapper.map(article, ArticleInfo.class));
         });
         return articleInfos;

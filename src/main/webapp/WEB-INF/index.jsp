@@ -14,16 +14,15 @@
 <body>
 <%@ include file="widget/nav.jsp" %>
 <div class="container">
-    <div class="col-10 offset-1">
+    <div class="col-12 col-md-10 offset-md-1">
         <div class="row row-cols-md-2 g-4 justify-content-center">
             <c:forEach items="${articles}" var="article">
-                <div class="col mb-4">
-                    <div class="card">
-                        <img src="https://picsum.photos/400/300" class="card-img-top w-70" alt="...">
+                <div class="col">
+                    <div class="card h-100" onclick="window.location.href='/article/${article.id}'">
+                        <img src="${article.pictureUrl}" class="card-img-top" alt="https://picsum.photos/400/300" style="width: 100%;">
                         <div class="card-body">
                             <h5 class="card-title">${article.title}</h5>
                             <p class="card-text">${article.content}</p>
-                            <a href="/article/${article.id}" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
@@ -31,6 +30,8 @@
         </div>
     </div>
 </div>
+
+
 
 </body>
 </html>

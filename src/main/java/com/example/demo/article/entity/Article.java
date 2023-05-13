@@ -25,6 +25,7 @@ public class Article {
     private User author;
     private Timestamp createTime;
     private Timestamp updateTime;
+    private String pictureUrl;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Reply> reply;
     @OneToMany(cascade = CascadeType.ALL)

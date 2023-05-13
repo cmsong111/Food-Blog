@@ -30,6 +30,7 @@ public class User implements UserDetails {
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
+    private String imageUrl;
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Article> articles;

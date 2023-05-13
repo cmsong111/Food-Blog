@@ -72,7 +72,7 @@ public class ArticleController {
         log.info("articleForm: {}", articleForm);
         ArticleInfo savedArticle = articleService.addArticle(articleForm, user);
         log.info("savedArticle: {}", savedArticle);
-        log.info("return Josn: {}", gson.toJson(savedArticle));
+        log.info("return Json: {}", gson.toJson(savedArticle));
         return ResponseEntity.status(HttpStatus.CREATED).body(gson.toJson(savedArticle));
     }
 

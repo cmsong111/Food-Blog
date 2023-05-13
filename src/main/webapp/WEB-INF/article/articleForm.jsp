@@ -24,18 +24,26 @@
 <%@ include file="../widget/nav.jsp" %>
 <%--blog article form with bootstrap form--%>
 <div class="container">
-    <form action="/blog" method="post">
-        <div class="form-group">
-            <label for="title">제목</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <form>
+                <div class="form-group">
+                    <label for="title">제목</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="content">내용</label>
+                    <textarea class="form-control" id="content" name="content" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="pictureUrl">사진</label>
+                    <input type="text" class="form-control" id="pictureUrl" name="pictureUrl">
+                </div>
+            </form>
+                <button class="btn btn-primary" onclick="postArticle()">작성</button>
         </div>
-        <div class="form-group">
-            <label for="content">내용</label>
-            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
-        </div>
-<%--        <button type="submit" class="btn btn-primary">작성</button>--%>
-    </form>
-    <button class ="btn btn-primary" onclick="postArticle()">작성</button>
+    </div>
 </div>
+
 </body>
 </html>
