@@ -25,7 +25,7 @@ jobs:
             app: java@17
             options:
               ports: 8080
-              start: java -jar ./build/libs/demo-0.0.1-SNAPSHOT.war
+              start: java -jar ./build/libs/instagram-0.0.1-SNAPSHOT.war
               build: ./gradlew clean build
               strategy: recreate
             context:
