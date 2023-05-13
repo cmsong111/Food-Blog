@@ -37,13 +37,22 @@
                     <!-- Post title-->
                     <h1 class="fw-bolder mb-1">${article.title}</h1>
                     <c:if test="${article.author.email == sessionScope.loginMember.email}">
-                        <button class="btn btn-link text-decoration-none text-primary p-0" onclick="editArticle()">Edit</button>
+                        <button class="btn btn-link text-decoration-none text-primary p-0" onclick="window.location.href='/article/${article.id}/edit'">Edit</button>
                         <button class="btn btn-link text-decoration-none text-danger p-0" onclick="deleteArticle(${article.id})">Delete</button>
                     </c:if>
 
 
                     <!-- Post meta content-->
-                    <div class="text-muted fst-italic mb-2">Posted on ${article.title} by ${article.author.username}</div>
+                    <div class="text-muted fst-italic mb-2" onclick="window.location.href='/user/profile/${article.author.email}'">Posted on ${article.title} by ${article.author.username}</div>
+                    <c:choose>
+                        <c:when test="${article.createTime != article.updateTime}">
+                            <div class="text-muted fst-italic mb-2">Posted at ${article.createTime} (편집됨)</div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="text-muted fst-italic mb-2">Posted at ${article.createTime}</div>
+                        </c:otherwise>
+                    </c:choose>
+
                     <!-- Post categories-->
                     <%--                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>--%>
                     <%--                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>--%>

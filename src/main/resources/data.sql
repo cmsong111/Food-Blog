@@ -16,8 +16,8 @@ values ('만드리곤드레밥', '생 곤드레는 흐르는 물에 깨끗이 �
         'https://www.visitbusan.net/uploadImgs/files/cntnts/20191216135832825_ttiel', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        ('민물가든', '30년간 운영해온 생선찜전문점으로, 전통방식인 나무통을 사용하여 조리하는 것이 특징이다. 20가지 이상의 재료로 만든 양념을 사용하는 이 곳은 묵은지 붕어조림과 붕어찜이 대표메뉴
 이다.', 'test4@test.com', 'https://www.visitbusan.net/uploadImgs/files/cntnts/20191217101816206_ttiel', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       ('부흥식당', '영도의 유명한 제주 자리돔전문점으로 싱싱한 자리돔과 직접 만든 양념장의 맛이 무척 잘 어울린다. 당일 판매 할 수 있는 한정된 양만 판매하고 있는 이 곳은 제주갈치 요리로도 유명하
-다.', 'test1@test.com', 'https://www.visitbusan.net/uploadImgs/files/cntnts/20191217113924538_ttiel', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       ('부흥식당', '영도의 유명한 제주 자리돔전문점으로 싱싱한 자리돔과 직접 만든 양념장의 맛이 무척 잘 어울린다. 당일 판매 할 수 있는 한정된 양만 판매하고 있는 이 곳은 제주갈치 요리로도 유명하다.', 'test1@test.com',
+        'https://www.visitbusan.net/uploadImgs/files/cntnts/20191217113924538_ttiel', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        ('가야할매밀면', '유명한 밀면전문점으로, 밀가루에 옥수수 전분을 섞어, 다른 밀면전문점들보다 더 탄력있는 면이 특징이다. 육수는 돼지뼈와 소뼈에 각종 야채와 여러 한약재를 섞어 만들고, 사이드
  메뉴인 만두도 인기 있다.', 'test2@test.com', 'https://www.visitbusan.net/uploadImgs/files/cntnts/20191217201857896_ttiel', CURRENT_TIMESTAMP,
         CURRENT_TIMESTAMP),

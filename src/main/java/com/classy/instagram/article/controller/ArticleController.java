@@ -1,5 +1,6 @@
 package com.classy.instagram.article.controller;
 
+import com.classy.instagram.article.dto.ArticleEditForm;
 import com.classy.instagram.article.dto.ArticleInfo;
 import com.classy.instagram.article.dto.ReplyDto;
 import com.classy.instagram.article.service.ArticleService;
@@ -135,5 +136,53 @@ public class ArticleController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/{id}/edit")
+    @Operation(summary = "게시글 수정 페이지 요청")
+    public String getEditArticle(
+            Model model,
+            @PathVariable("id") Long id,
+            HttpSession session
+    ) {
+        UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
+        if (user == null) {
+            log.info("user is null");
+            return "redirect:/";
+        }
+        ArticleInfo articleInfo = articleService.getArticle(id);
+        if (articleInfo == null) {
+            return "redirect:/";
+        }
+        if (!articleInfo.getAuthor().getEmail().equals(user.getEmail())) {
+            return "redirect:/";
+        }
+        model.addAttribute("article", articleInfo);
+        return "article/articleEditForm";
+    }
+
+    @PatchMapping("/{id}")
+    @Operation(summary = "게시글 수정")
+    @ApiResponse(responseCode = "204", description = "게시글 수정 성공")
+    public ResponseEntity<Object> editArticle(
+            @PathVariable("id") Long id,
+            @RequestBody ArticleEditForm articleForm,
+            HttpSession session
+    ) throws Exception {
+        UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
+        if (user == null) {
+            log.info("user is null");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        log.info("id: {}", id);
+        log.info("articleForm: {}", articleForm);
+        ArticleInfo saved;
+        try {
+            saved =  articleService.updateArticle(articleForm);
+        } catch (Exception e) {
+            log.info("exception: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+        return ResponseEntity.ok(saved);
     }
 }

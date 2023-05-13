@@ -32,7 +32,27 @@ function postArticle() {
         }
     });
 }
+function editArticle() {
+    const data = {
+        id : $("#id").val(),
+        title: $("#title").val(),
+        content: $("#content").val(),
+        pictureUrl: $("#pictureUrl").val()
+    };
 
+    $.ajax({
+        type: "PATCH",
+        url: "/article/"+data.id,
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        statusCode: {
+            200: handle201,
+            201: handle201,
+            401: handle401
+        }
+    });
+}
 function deleteArticle(id){
     $.ajax({
         type: "DELETE",

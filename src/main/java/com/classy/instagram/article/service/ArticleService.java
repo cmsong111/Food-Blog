@@ -1,5 +1,6 @@
 package com.classy.instagram.article.service;
 
+import com.classy.instagram.article.dto.ArticleEditForm;
 import com.classy.instagram.article.dto.ArticleInfo;
 import com.classy.instagram.article.dto.ReplyDto;
 import com.classy.instagram.article.dto.ArticleForm;
@@ -46,6 +47,17 @@ public class ArticleService {
         article.setCreateTime(new Timestamp(System.currentTimeMillis()));
         article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
         article.setAuthor(modelMapper.map(userDto, User.class));
+        return modelMapper.map(articleRepository.save(article), ArticleInfo.class);
+    }
+
+    public ArticleInfo updateArticle(ArticleEditForm articleForm){
+        Article article = articleRepository.findById(articleForm.getId()).orElseThrow();
+
+        article.setTitle(articleForm.getTitle());
+        article.setContent(articleForm.getContent());
+        article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+        article.setPictureUrl(articleForm.getPictureUrl());
+
         return modelMapper.map(articleRepository.save(article), ArticleInfo.class);
     }
 
