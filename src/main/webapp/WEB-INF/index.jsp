@@ -19,7 +19,7 @@
             <c:forEach items="${articles}" var="article">
                 <div class="col">
                     <div class="card h-100" onclick="window.location.href='/article/${article.id}'" style="cursor:pointer">
-                        <img src="${article.pictureUrl}" class="card-img-top" alt="https://picsum.photos/400/300" style="width: 100%;">
+                        <img src="${article.pictureUrl}" class="card-img-top" alt="article image" style="width: 100%;">
                         <div class="card-body">
                             <h5 class="card-title">${article.title}</h5>
                             <p class="card-text">${article.content}</p>

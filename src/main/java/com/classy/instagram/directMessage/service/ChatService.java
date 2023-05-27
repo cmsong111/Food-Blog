@@ -39,7 +39,7 @@ public class ChatService {
         User user = userRepository.findById(userEmail).orElseThrow();
         ArrayList<ChatRoomDto> chatRoomDtos = new ArrayList<>();
 
-        Collection<User> id = List.of(user);
+        Collection<User> id = List.of(user); 
         chatRoomRepository.findByChatMembersIn(id).forEach(
                 chatRoom -> {
                     chatRoomDtos.add(modelMapper.map(chatRoom, ChatRoomDto.class));

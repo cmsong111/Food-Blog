@@ -39,8 +39,12 @@
                     </c:otherwise>
                 </c:choose>
             </ul>
+            <form class="d-flex" action="/user/Search" method="get">
+                <input class="form-control me-2" type="text" name="keyword" placeholder="Search by nickname" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
         </div>
     </div>
 </nav>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -148,4 +148,18 @@ public class UserController {
         log.info("session: {}", session.getAttribute(SessionConfig.LOGIN_MEMBER));
         return ResponseEntity.ok(saved);
     }
+
+    @GetMapping("/Search")
+    @Operation(summary = "유저 검색")
+    @ApiResponse(responseCode = "200", description = "유저 검색 성공")
+    public String userSearch(Model model, @RequestParam String keyword) {
+        log.info("userSearch GET 호출");
+        log.info("keyword: {}", keyword);
+
+        List<UserDto> users = userService.findUserList(keyword);
+        log.info("users: {}", users);
+
+        model.addAttribute("users", users);
+        return "userSearch";
+    }
 }
