@@ -32,9 +32,10 @@ function postArticle() {
         }
     });
 }
+
 function editArticle() {
     const data = {
-        id : $("#id").val(),
+        id: $("#id").val(),
         title: $("#title").val(),
         content: $("#content").val(),
         pictureUrl: $("#pictureUrl").val()
@@ -42,7 +43,7 @@ function editArticle() {
 
     $.ajax({
         type: "PATCH",
-        url: "/article/"+data.id,
+        url: "/article/" + data.id,
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -53,7 +54,8 @@ function editArticle() {
         }
     });
 }
-function deleteArticle(id){
+
+function deleteArticle(id) {
     $.ajax({
         type: "DELETE",
         url: "/article/" + id,
@@ -64,6 +66,42 @@ function deleteArticle(id){
             },
             400: handle400,
             401: handle401
+        }
+    });
+}
+
+
+function like() {
+    var id = $("#article-id").val();
+    $.ajax({
+        type: "POST",
+        url: "/article/" + id + "/like",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        statusCode: {
+            200: function () {
+                window.location.reload();
+            },
+            400: handle400, // 잘못된 요청일 경우 처리할 함수
+            401: handle401 // 로그인 필요한 경우 처리할 함수
+        }
+    });
+}
+
+function dislike() {
+    var id = $("#article-id").val();
+
+    $.ajax({
+        type: "DELETE",
+        url: "/article/" + id + "/like",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        statusCode: {
+            200: function () {
+                window.location.reload();
+            },
+            400: handle400, // 잘못된 요청일 경우 처리할 함수
+            401: handle401 // 로그인 필요한 경우 처리할 함수
         }
     });
 }

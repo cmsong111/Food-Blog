@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -30,4 +31,7 @@ public class Article {
     private List<Reply> reply;
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<ArticleLike> like;
+    @Column(name = "likes_count")
+    @ColumnDefault("0")
+    public int likesCount;
 }

@@ -5,6 +5,7 @@ import com.classy.instagram.article.dto.ArticleInfo;
 import com.classy.instagram.article.dto.ReplyDto;
 import com.classy.instagram.article.dto.ArticleForm;
 import com.classy.instagram.article.entity.Article;
+import com.classy.instagram.article.entity.ArticleLike;
 import com.classy.instagram.article.entity.Reply;
 import com.classy.instagram.article.repository.ArticleLikeRepository;
 import com.classy.instagram.article.repository.ArticleRepository;
@@ -50,7 +51,7 @@ public class ArticleService {
         return modelMapper.map(articleRepository.save(article), ArticleInfo.class);
     }
 
-    public ArticleInfo updateArticle(ArticleEditForm articleForm){
+    public ArticleInfo updateArticle(ArticleEditForm articleForm) {
         Article article = articleRepository.findById(articleForm.getId()).orElseThrow();
 
         article.setTitle(articleForm.getTitle());
@@ -79,10 +80,19 @@ public class ArticleService {
         articleRepository.delete(article);
     }
 
+    public ArticleInfo getArticle(Long id, UserDto userDto){
+        ArticleInfo articleInfo = getArticle(id);
+        boolean articleLike = articleLikeRepository.existsByArticle_IdAndUser_Email(id, userDto.getEmail());
+
+        if(articleLike){
+            articleInfo.setLiked(true);
+        }
+        return articleInfo;
+    }
+
     public ArticleInfo getArticle(Long id) {
         Article article = articleRepository.findById(id).orElseThrow();
         ArticleInfo articleInfo = modelMapper.map(article, ArticleInfo.class);
-        articleInfo.setLikeCount(articleLikeRepository.countByArticle_Id(id));
         replyRepository.findByArticle_Id(id).forEach(reply -> {
             articleInfo.getReply().add(modelMapper.map(reply, ReplyDto.class));
         });
@@ -138,8 +148,8 @@ public class ArticleService {
     /**
      * delete reply by id with userDto
      *
-     * @param replyIdx      reply id
-     * @param userDto userDto
+     * @param replyIdx reply id
+     * @param userDto  userDto
      * @throws Exception if userDto is not the author of the reply
      * @author 김남주
      */
@@ -151,4 +161,58 @@ public class ArticleService {
         replyRepository.deleteById(replyIdx);
     }
 
+
+    public boolean likeArticle(Long articleId, UserDto userDto) {
+        Optional<Article> optionalArticle = articleRepository.findById(articleId);
+        User user = userRepository.findById(userDto.getEmail()).orElseThrow();
+
+
+        if (optionalArticle.isPresent()) {
+            Article article = optionalArticle.get();
+            if (!isArticleLikedByUser(article, user)) {
+                ArticleLike articleLike = ArticleLike.builder()
+                        .user(user)
+                        .article(article)
+                        .build();
+                ArticleLike saved = articleLikeRepository.save(articleLike);
+                log.info("saved: {}", saved);
+                countArticleLike(article);
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public boolean unlikeArticle(Long articleId, UserDto userDto) {
+        Optional<Article> optionalArticle = articleRepository.findById(articleId);
+        User user = userRepository.findById(userDto.getEmail()).orElseThrow();
+
+        if (optionalArticle.isPresent()) {
+            Article article = optionalArticle.get();
+
+            if (isArticleLikedByUser(article, user)) {
+                ArticleLike articleLike = articleLikeRepository.findByArticleAndUser(article, user);
+                articleLikeRepository.delete(articleLike);
+                countArticleLike(article);
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public boolean isArticleLikedByUser(Article article, User user) {
+        return articleLikeRepository.existsByArticleAndUser(article, user);
+    }
+
+    private void countArticleLike(Article article) {
+        log.info("좋아요 카운트 ");
+        int count = articleLikeRepository.countByArticle(article);
+        article.setLikesCount(count);
+        articleRepository.save(article);
+        log.info("좋아요 카운트 끝 : {}", count);
+
+
+    }
 }

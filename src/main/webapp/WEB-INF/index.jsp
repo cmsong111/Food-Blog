@@ -21,7 +21,10 @@
                     <div class="card h-100" onclick="window.location.href='/article/${article.id}'" style="cursor:pointer">
                         <img src="${article.pictureUrl}" class="card-img-top" alt="article image" style="width: 100%;">
                         <div class="card-body">
-                            <h5 class="card-title">${article.title}</h5>
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">${article.title}</h5>
+                                <p class="card-text">❤ ${article.likesCount}</p>
+                            </div>
                             <p class="card-text">${article.content}</p>
                         </div>
                     </div>

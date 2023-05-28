@@ -1,10 +1,7 @@
 package com.classy.instagram.article.controller;
 
-import com.classy.instagram.article.dto.ArticleEditForm;
-import com.classy.instagram.article.dto.ArticleInfo;
-import com.classy.instagram.article.dto.ReplyDto;
+import com.classy.instagram.article.dto.*;
 import com.classy.instagram.article.service.ArticleService;
-import com.classy.instagram.article.dto.ArticleForm;
 import com.classy.instagram.configuration.SessionConfig;
 import com.classy.instagram.user.dto.UserDto;
 import com.google.gson.Gson;
@@ -40,8 +37,17 @@ public class ArticleController {
     @Operation(summary = "게시글 상세보기 페이지 요청")
     public String getArticleDetail(
             Model model,
+            HttpSession session,
             @PathVariable("id") Long id) {
-        ArticleInfo articleInfo = articleService.getArticle(id);
+        UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
+        ArticleInfo articleInfo;
+
+        if (user == null) {
+            articleInfo = articleService.getArticle(id);
+        } else {
+            articleInfo = articleService.getArticle(id, user);
+        }
+
         if (articleInfo == null) {
             return "redirect:/";
         }
@@ -178,11 +184,49 @@ public class ArticleController {
         log.info("articleForm: {}", articleForm);
         ArticleInfo saved;
         try {
-            saved =  articleService.updateArticle(articleForm);
+            saved = articleService.updateArticle(articleForm);
         } catch (Exception e) {
             log.info("exception: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
         return ResponseEntity.ok(saved);
     }
+
+    @PostMapping("/{id}/like")
+    @Operation(summary = "게시글 좋아요")
+    @ApiResponse(responseCode = "200", description = "게시글 좋아요 처리 성공")
+    public ResponseEntity<Object> likeArticle(
+            @PathVariable("id") Long id,
+            HttpSession session
+    ) {
+        UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
+        log.info("좋아요 시도됨 id: {}, user :{}", id, user);
+        if (user == null) {
+            log.info("user is null");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        articleService.likeArticle(id, user);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}/like")
+    @Operation(summary = "게시글 좋아요 취소")
+    @ApiResponse(responseCode = "200", description = "게시글 좋아요 취소 처리 성공")
+    public ResponseEntity<Object> dislikeArticle(
+            @PathVariable("id") Long id,
+            HttpSession session
+    ) {
+        UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
+        if (user == null) {
+            log.info("user is null");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        articleService.unlikeArticle(id, user);
+        return ResponseEntity.ok().build();
+
+    }
+
+
 }
