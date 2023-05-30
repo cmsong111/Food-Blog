@@ -17,6 +17,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Article {
+    @Column(name = "likes_count")
+    @ColumnDefault("0")
+    public int likesCount;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,7 +34,4 @@ public class Article {
     private List<Reply> reply;
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<ArticleLike> like;
-    @Column(name = "likes_count")
-    @ColumnDefault("0")
-    public int likesCount;
 }

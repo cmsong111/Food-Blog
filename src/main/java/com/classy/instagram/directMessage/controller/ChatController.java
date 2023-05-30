@@ -1,7 +1,7 @@
 package com.classy.instagram.directMessage.controller;
 
-import com.classy.instagram.directMessage.dto.ChatMessageDto;
 import com.classy.instagram.configuration.SessionConfig;
+import com.classy.instagram.directMessage.dto.ChatMessageDto;
 import com.classy.instagram.directMessage.dto.ChatRoomDto;
 import com.classy.instagram.directMessage.entity.ChatRoom;
 import com.classy.instagram.directMessage.service.ChatService;
@@ -65,8 +65,6 @@ public class ChatController {
         ChatRoom room = chatService.joinChatRoom(id, userEmail);
         return room;
     }
-
-
 
 
 }

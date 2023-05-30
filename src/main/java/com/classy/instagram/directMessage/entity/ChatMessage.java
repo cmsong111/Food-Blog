@@ -26,6 +26,6 @@ public class ChatMessage {
     @ManyToOne
     private User sender; //채팅을 보낸 사람
     private String content; // 메세지
-    private  Timestamp sendTime; // 보낸 시간
+    private Timestamp sendTime; // 보낸 시간
 
 }

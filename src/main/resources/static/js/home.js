@@ -1,3 +1,3 @@
-function movePage(id){
-    location.href = "/article/"+id;
+function movePage(id) {
+    location.href = "/article/" + id;
 }

@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content">내용</label>
-                    <textarea class="form-control" id="content" name="content" rows="10" >${article.content}</textarea>
+                    <textarea class="form-control" id="content" name="content" rows="10">${article.content}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="pictureUrl">사진</label>

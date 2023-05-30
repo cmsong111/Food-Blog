@@ -1,9 +1,9 @@
 package com.classy.instagram.article.service;
 
 import com.classy.instagram.article.dto.ArticleEditForm;
+import com.classy.instagram.article.dto.ArticleForm;
 import com.classy.instagram.article.dto.ArticleInfo;
 import com.classy.instagram.article.dto.ReplyDto;
-import com.classy.instagram.article.dto.ArticleForm;
 import com.classy.instagram.article.entity.Article;
 import com.classy.instagram.article.entity.ArticleLike;
 import com.classy.instagram.article.entity.Reply;
@@ -80,11 +80,11 @@ public class ArticleService {
         articleRepository.delete(article);
     }
 
-    public ArticleInfo getArticle(Long id, UserDto userDto){
+    public ArticleInfo getArticle(Long id, UserDto userDto) {
         ArticleInfo articleInfo = getArticle(id);
         boolean articleLike = articleLikeRepository.existsByArticle_IdAndUser_Email(id, userDto.getEmail());
 
-        if(articleLike){
+        if (articleLike) {
             articleInfo.setLiked(true);
         }
         return articleInfo;
@@ -215,7 +215,8 @@ public class ArticleService {
 
 
     }
-    public List<ArticleInfo> searchArticle(String keyword){
+
+    public List<ArticleInfo> searchArticle(String keyword) {
         List<Article> articles = articleRepository.findByTitleContainsOrContentContains(keyword, keyword);
         List<ArticleInfo> articleInfos = new ArrayList<>();
         articles.forEach(article -> {
@@ -224,7 +225,6 @@ public class ArticleService {
         });
         return articleInfos;
     }
-
 
 
 }

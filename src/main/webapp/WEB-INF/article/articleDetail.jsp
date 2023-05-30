@@ -62,7 +62,7 @@
                                 </c:otherwise>
                             </c:choose>
                         </div>
-                        <div class="d-flex align-items-center" >
+                        <div class="d-flex align-items-center">
                             <div class="card border-danger p-2">
                                 <div class="d-flex align-items-center">
                                     <button class="btn btn-link text-decoration-none p-0" id="like-btn">

@@ -40,7 +40,7 @@
                     <input type="text" class="form-control" id="pictureUrl" name="pictureUrl">
                 </div>
             </form>
-                <button class="btn btn-primary" onclick="postArticle()">작성</button>
+            <button class="btn btn-primary" onclick="postArticle()">작성</button>
         </div>
     </div>
 </div>

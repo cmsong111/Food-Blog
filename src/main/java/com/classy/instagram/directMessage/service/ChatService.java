@@ -1,9 +1,9 @@
 package com.classy.instagram.directMessage.service;
 
+import com.classy.instagram.directMessage.dto.ChatRoomDto;
 import com.classy.instagram.directMessage.entity.ChatRoom;
 import com.classy.instagram.directMessage.repository.ChatMessageRepository;
 import com.classy.instagram.directMessage.repository.ChatRoomRepository;
-import com.classy.instagram.directMessage.dto.ChatRoomDto;
 import com.classy.instagram.user.entity.User;
 import com.classy.instagram.user.repository.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -39,7 +39,7 @@ public class ChatService {
         User user = userRepository.findById(userEmail).orElseThrow();
         ArrayList<ChatRoomDto> chatRoomDtos = new ArrayList<>();
 
-        Collection<User> id = List.of(user); 
+        Collection<User> id = List.of(user);
         chatRoomRepository.findByChatMembersIn(id).forEach(
                 chatRoom -> {
                     chatRoomDtos.add(modelMapper.map(chatRoom, ChatRoomDto.class));
@@ -79,7 +79,7 @@ public class ChatService {
         return chatRoomRepository.save(chatRoom);
     }
 
-    public ChatRoom joinChatRoom(Long roomId, String userId){
+    public ChatRoom joinChatRoom(Long roomId, String userId) {
         ChatRoom chatRoom = chatRoomRepository.findById(roomId).orElseThrow();
         User user = userRepository.findById(userId).orElseThrow();
         chatRoom.getChatMembers().add(user);

@@ -2,11 +2,11 @@ package com.classy.instagram.user.controller;
 
 import com.classy.instagram.article.dto.ArticleInfo;
 import com.classy.instagram.article.service.ArticleService;
-import com.classy.instagram.user.service.UserService;
 import com.classy.instagram.configuration.SessionConfig;
 import com.classy.instagram.user.dto.LoginForm;
 import com.classy.instagram.user.dto.SignUpForm;
 import com.classy.instagram.user.dto.UserDto;
+import com.classy.instagram.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -134,14 +134,14 @@ public class UserController {
         // Session 과 UserDto 를 비교해서 같은지 확인
         UserDto user = (UserDto) session.getAttribute(SessionConfig.LOGIN_MEMBER);
 
-        if (user == null){
+        if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         if (!user.getEmail().equals(userDto.getEmail())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
-        UserDto saved  =  userService.update(userDto);
+        UserDto saved = userService.update(userDto);
         log.info("saved: {}", saved);
 
         session.setAttribute(SessionConfig.LOGIN_MEMBER, saved);

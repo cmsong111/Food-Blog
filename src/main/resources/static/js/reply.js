@@ -1,5 +1,5 @@
 function mykeydown() {
-    if(window.event.keyCode==13) //enter 일 경우
+    if (window.event.keyCode == 13) //enter 일 경우
     {
         createReply();
     }
@@ -32,7 +32,7 @@ function createReply() {
     });
 }
 
-function deleteReply(replyId){
+function deleteReply(replyId) {
     $.ajax({
         type: "DELETE",
         url: "/article/reply/" + replyId,

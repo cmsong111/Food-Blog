@@ -11,10 +11,10 @@ function login() {
         contentType: "application/json",
         data: JSON.stringify(data),
         dataType: "json",
-        success: function() {
+        success: function () {
             location.href = "/";
         },
-        error: function(xhr, textStatus, errorThrown) {
+        error: function (xhr, textStatus, errorThrown) {
             alert("로그인 실패: " + xhr.status + " " + errorThrown);
         }
     });
@@ -45,18 +45,18 @@ function register() {
         contentType: "application/json",
         data: JSON.stringify(data),
         dataType: "json",
-        success: function() {
+        success: function () {
             alert("회원가입 및 로그인 성공");
             location.href = "/";
         },
-        error: function(xhr, textStatus, errorThrown) {
+        error: function (xhr, textStatus, errorThrown) {
             alert("로그인 실패: " + xhr.status + " " + errorThrown);
         }
     });
 }
 
 
-function updateUser(){
+function updateUser() {
     var email = $("#inputEmail").val();
     var password = $("#inputPassword").val();
     var username = $("#inputUsername").val();
@@ -77,14 +77,14 @@ function updateUser(){
         data: JSON.stringify(data),
         dataType: "json",
         statusCode: {
-            200: function() {
+            200: function () {
                 alert("수정 성공");
-                location.href = "/user/profile/"+email;
+                location.href = "/user/profile/" + email;
             },
-            400: function() {
+            400: function () {
                 alert("수정 실패");
             },
-            401: function() {
+            401: function () {
                 alert("유저정보가 일치하지 않습니다.");
             }
         }

@@ -5,16 +5,17 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Spring Boot WebSocket Chat Application</title>
-    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" />
+    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>"/>
 </head>
 <body>
 
-<div id="username-page" >
+<div id="username-page">
     <div class="username-page-container">
         <h1 class="title">username을 입력하세요</h1>
         <form id="usernameForm" name="usernameForm">
             <div class="form-group">
-                <input type="text" id="name" disabled="disabled" readonly="readonly" placeholder="Username" autocomplete="off" value="${user}" class="form-control" />
+                <input type="text" id="name" disabled="disabled" readonly="readonly" placeholder="Username" autocomplete="off" value="${user}"
+                       class="form-control"/>
             </div>
             <div class="form-group">
                 <button type="submit" class="accent username-submit">채팅 시작하기</button>
