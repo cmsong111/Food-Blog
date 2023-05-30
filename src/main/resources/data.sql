@@ -12,6 +12,8 @@ values ('만드리곤드레밥', '생 곤드레는 흐르는 물에 깨끗이 �
 삶은 뒤 불을 끄고 10분 정도 물에 충분히 불러준다. 그 후 깨끗한 물로 씻어 이물질이 없도록 하고 용도에 따라 먹기 좋은 크기로 잘라준다. 줄기가 억센 곤드레를 수 시간 물에 담가 불리면 연하게
 먹을 수 있다. 만져봐서 지나치게 억센 줄기는 미리 제거하는 것이 좋다.', 'test2@test.com', 'https://www.visitbusan.net/uploadImgs/files/cntnts/20191209162810545_ttiel',
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       ('만호갈미 샤브샤브', '샤브샤브, 수육, 구이 등 다양한 방식으로 갈미조개를 요리하는 갈미조개 전문 식당. 국물이 맛있기로 유명한 이 곳은 갈미샤브샤브와 갈미수육이 대표메뉴이다.', 'test3@test.com',
+        'https://www.visitbusan.net/uploadImgs/files/cntnts/20191216135832825_ttiel', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        ('민물가든', '30년간 운영해온 생선찜전문점으로, 전통방식인 나무통을 사용하여 조리하는 것이 특징이다. 20가지 이상의 재료로 만든 양념을 사용하는 이 곳은 묵은지 붕어조림과 붕어찜이 대표메뉴
 이다.', 'test4@test.com', 'https://www.visitbusan.net/uploadImgs/files/cntnts/20191217101816206_ttiel', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        ('부흥식당', '영도의 유명한 제주 자리돔전문점으로 싱싱한 자리돔과 직접 만든 양념장의 맛이 무척 잘 어울린다. 당일 판매 할 수 있는 한정된 양만 판매하고 있는 이 곳은 제주갈치 요리로도 유명하다.', 'test1@test.com',
@@ -22,6 +24,8 @@ values ('만드리곤드레밥', '생 곤드레는 흐르는 물에 깨끗이 �
        ('국제밀면', '부산의 수많은 밀면전문점 중에서도 가장 유명한 식당 중 한 곳으로, 소 사골만을 사용한 육수 등 독창적인 방식의 밀면을 만들고 있다. 보통 기계로 잘려진 편육이 고명으로 올려지는데
 , 이 곳은 손으로 일일이 얇게 찢은 양지머리 고기가 올려지는 것이 특징이다.', 'test3@test.com', 'https://www.visitbusan.net/uploadImgs/files/cntnts/20191217202633906_ttiel',
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       ('물꽁식당', '59년째 3대를 이어 운영해온 전통 있는 아귀요리전문점으로 신선한 아귀를 사용해 아구찜, 수육, 탕을 만든다. 자극적이지 않은 담백한 맛의 아구찜이 대표메뉴로 오래되었지만 청결한
+가게가 인상적이다.', 'test4@test.com', 'https://www.visitbusan.net/uploadImgs/files/cntnts/20191218094154651_ttiel', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        ('부산명물횟집', '1946년부터 운영해 온 무척 유명한 횟집으로 여러 유명인사들의 단골집이기도 하다. 광어회 한 접시에 고기뼈를 푹 고아서 만든 진하고 담백한 맑은 국과 여섯 가지 밑반찬이 나오는
  회정식이 인기메뉴이다.', 'test1@test.com', 'https://www.visitbusan.net/uploadImgs/files/cntnts/20191218095111181_ttiel', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        ('원조한양족발', '35년 간 국내산 돼지 족을 사용하여 족발을 만들고 있는 유명한 족발전문점으로, 하루 2번 매장에서 삶은 신선하고 싱싱한 족발 맛으로 유명하다. 고기를 얇게 썰어 맛과 식감을 살
@@ -405,7 +409,17 @@ values ('만드리곤드레밥', '생 곤드레는 흐르는 물에 깨끗이 �
        ('우연횟집', '오픈 전 웨이팅으로 유명한 횟집으로, 주문 즉시 잡은 활어를 사용한다. 두툼한 회를 접시가 넘치도록 담아서 주는데 가격마저 저렴한 편이라, 대학가 상권인 이 지역에서 가장 인기 있
 는 주점 중 한 곳이라고 한다.', 'test3@test.com', 'https://www.visitbusan.net/uploadImgs/files/cntnts/20220512175424144_ttiel', CURRENT_TIMESTAMP,
         CURRENT_TIMESTAMP);
+insert into chat_room(name)
+values ('room1'),
+       ('room2'),
+       ('room3'),
+       ('room4');
 
+insert into chat_room_chat_members (chat_room_id, chat_members_email)
+values (1, 'test1@test.com'),
+       (1, 'test2@test.com'),
+       (2, 'test1@test.com'),
+       (2, 'test4@test.com');
 
 insert into reply(content, article_id, user_email, create_time, update_time)
 values ('대한 간에 있는 뼈 피고 황금시대를 끓는 있으랴? 내려온 많이 사람은 자신과 인생에 보배를 인생을 것이다. 소금이라 이것이야말로 천지는 듣기만 방황하여도, 위하여 할지니, 꾸며 우리 것이다.', 1, 'test2@test.com',
@@ -1112,4 +1126,12 @@ values ('대한 간에 있는 뼈 피고 황금시대를 끓는 있으랴? 내�
        ('온갖 끓는 불어 아니다. 청춘을 밝은 없으면, 우는 거선의 많이 오아이스도 그들의 사라지지 있는가? 방지하는 청춘이 없으면 있으며, 생명을 일월과 인간은 방황하였으며, 철환하였는가?', 148, 'test3@test.com',
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        ('힘차게 우리 긴지라 인간의 구하지 것이다. 할지라도 열락의 끝에 열락의 할지니, 청춘을 산야에 뿐이다. 영원히 쓸쓸한 피어나는 방황하였으며, 풀이 생명을 아름다우냐?', 148, 'test4@test.com', CURRENT_TIMESTAMP,
-        CURRENT_TIMESTAMP);
+        CURRENT_TIMESTAMP),
+       ('대고, 꽃이 가는 끝까지 피부가 같은 보라. 얼음에 굳세게 위하여서 낙원을 무한한 없으면 황금시대다. 웅대한 품으며, 같이, 철환하였는가? 것이다.보라, 두기 품에 같이 간에 것이다.', 149, 'test1@test.com',
+        CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       ('인간에 같은 얼마나 운다. 인간이 같이, 천자만홍이 것이다. 행복스럽고 붙잡아 크고 것이다.', 149, 'test2@test.com', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       ('밥을 아름답고 그림자는 노년에게서 청춘이 운다. 풍부하게 끓는 청춘을 같이, 이것이다.', 149, 'test3@test.com', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       ('위하여, 작고 설레는 노래하며 피다. 길지 이것을 끝까지 이것이야말로 싹이 힘차게 맺어, 보라.', 150, 'test4@test.com', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       ('것이다.보라, 있는 그들을 보내는 많이 우리의 싶이 위하여서, 뿐이다. 이상을 날카로우나 온갖 뿐이다. 공자는 뜨거운지라, 할지라도 발휘하기 사는가 봄바람이다. 있는 오직 피가 아름다우냐?', 150, 'test1@test.com',
+        CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       ('풍부하게 할지라도 얼음이 싹이 있으랴? 유소년에게서 가진 아니더면, 얼음과 그림자는 따뜻한 무엇을 이상은 것이다.', 150, 'test2@test.com', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
