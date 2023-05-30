@@ -215,4 +215,16 @@ public class ArticleService {
 
 
     }
+    public List<ArticleInfo> searchArticle(String keyword){
+        List<Article> articles = articleRepository.findByTitleContainsOrContentContains(keyword, keyword);
+        List<ArticleInfo> articleInfos = new ArrayList<>();
+        articles.forEach(article -> {
+            if (article.getContent().length() > 50) article.setContent(article.getContent().substring(0, 50) + "...");
+            articleInfos.add(modelMapper.map(article, ArticleInfo.class));
+        });
+        return articleInfos;
+    }
+
+
+
 }

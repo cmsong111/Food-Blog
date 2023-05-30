@@ -10,5 +10,9 @@ import java.util.List;
 public interface ArticleRepository  extends JpaRepository<Article,Long> {
     List<Article> findByAuthor_EmailOrderByCreateTimeDesc(String email);
 
+    List<Article> findByTitleContainsOrContentContains(String title, String content);
+
+
+
 
 }

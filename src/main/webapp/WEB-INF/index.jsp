@@ -13,6 +13,18 @@
 </head>
 <body>
 <%@ include file="widget/nav.jsp" %>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+            <form action="/" method="POST">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="검색어를 입력하세요" aria-label="Search text" name="keyword">
+                    <button class="btn btn-primary" type="submit">검색</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="col-12  col-md-10 offset-md-1">
         <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
