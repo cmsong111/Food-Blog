@@ -17,6 +17,7 @@ spring:
       hibernate:
         format_sql: 'true'
   datasource:
+    username: sa
     password: ''
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:test;MODE=MySQL
@@ -25,6 +26,7 @@ spring:
       mode: always
       encoding: UTF-8
 
-datasource:
-  username: sa
-  password: ''
+  devtools:
+    livereload:
+      enabled: true
+
