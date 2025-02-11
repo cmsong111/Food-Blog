@@ -29,3 +29,8 @@ spring:
     init:
       mode: always
       encoding: UTF-8
+
+
+storage:
+  imgbb:
+    api-key: 'your-api-key'
