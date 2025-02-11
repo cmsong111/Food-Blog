@@ -3,24 +3,25 @@ package com.classy.instagram.user.controller;
 import com.classy.instagram.article.dto.ArticleInfo;
 import com.classy.instagram.article.service.ArticleService;
 import com.classy.instagram.configuration.SessionConfig;
-import com.classy.instagram.user.dto.LoginForm;
-import com.classy.instagram.user.dto.SignUpForm;
 import com.classy.instagram.user.dto.UserDto;
 import com.classy.instagram.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/user")
@@ -37,67 +38,6 @@ public class UserController {
         this.articleService = articleService;
     }
 
-    @GetMapping("/login")
-    @Operation(summary = "로그인 페이지")
-    @ApiResponse(responseCode = "200", description = "로그인 페이지")
-    public String loginPage() {
-        log.info("loginPage GET 호출");
-        return "login";
-    }
-
-    @PostMapping("/login")
-    @Operation(summary = "로그인")
-    @ApiResponse(responseCode = "200", description = "로그인 성공")
-    @ResponseBody
-    public ResponseEntity<Object> Login(@RequestBody LoginForm loginForm, HttpServletRequest request) {
-        log.info("api login Post Requested");
-        HttpSession session = request.getSession();
-
-        if (session.getAttribute(SessionConfig.LOGIN_MEMBER) != null) {
-            session.removeAttribute(SessionConfig.LOGIN_MEMBER);
-        }
-
-        UserDto user = userService.login(loginForm);
-        log.info("user: {}", user);
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        } else {
-            session.setAttribute(SessionConfig.LOGIN_MEMBER, user);
-            return ResponseEntity.ok(user);
-        }
-    }
-
-    @GetMapping("/signup")
-    @Operation(summary = "회원가입 페이지 요청")
-    @ApiResponse(responseCode = "200", description = "회원가입 페이지")
-    public String signUpPage() {
-        log.info("signUpPage Get requested");
-        return "signup";
-    }
-
-
-    @PostMapping("/signup")
-    @Operation(summary = "회원가입")
-    @ApiResponse(responseCode = "200", description = "회원가입 성공")
-    public ResponseEntity<Object> signUp(@RequestBody SignUpForm signUpFormDto,
-                                         HttpServletRequest request) {
-        log.info("signup Post 호출");
-        HttpSession session = request.getSession();
-
-        UserDto user = userService.signUp(signUpFormDto);
-
-        session.setAttribute(SessionConfig.LOGIN_MEMBER, user);
-        return ResponseEntity.ok(user);
-    }
-
-    @GetMapping("/logout")
-    @Operation(summary = "로그아웃")
-    @ApiResponse(responseCode = "200", description = "로그아웃 성공")
-    public String logout(HttpSession session) {
-        log.info("logout Post 호출");
-        session.invalidate();
-        return "redirect:/";
-    }
 
     @GetMapping("/profile/{email}")
     @Operation(summary = "프로필 페이지")

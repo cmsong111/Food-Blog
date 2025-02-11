@@ -30,19 +30,19 @@
 <!-- Page content-->
 <div class="container">
     <div class="text-center mt-5">
-        <form action="/user/login" method="post">
+        <form action="/login" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+
             <div class="form-floating">
-                <input type="email" class="form-control" id="email" name="email" placeholder="이메일 입력...">
+                <input type="email" class="form-control" id="email" name="email" placeholder="이메일 입력..." required>
                 <label for="email">이메일</label>
             </div>
-            <br>
             <div class="form-floating">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호" required>
                 <label for="password">비밀번호</label>
             </div>
-            <br>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">로그인</button>
         </form>
-        <button class="w-100 btn btn-lg btn-primary" onclick="login()">로그인</button>
         <br><br>
         <a href="signup">회원가입</a>
     </div>

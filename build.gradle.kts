@@ -33,6 +33,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-websocket")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.4")
+	implementation("org.springframework.security:spring-security-taglibs")
 
 	// Kotlin
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -53,6 +54,7 @@ dependencies {
 
 	// H2 Database
 	runtimeOnly("com.h2database:h2")
+	runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
 
 	//Json converter
 	implementation("com.google.code.gson:gson:2.10.1")
@@ -62,7 +64,6 @@ dependencies {
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testImplementation("org.springframework.security:spring-security-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
 }
 
 kotlin {

@@ -13,16 +13,15 @@ import com.classy.instagram.article.repository.ReplyRepository;
 import com.classy.instagram.user.dto.UserDto;
 import com.classy.instagram.user.entity.User;
 import com.classy.instagram.user.repository.UserRepository;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j

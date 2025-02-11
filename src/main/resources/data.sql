@@ -1,10 +1,16 @@
-insert into users(email, account_non_expired, account_non_locked, credentials_non_expired, enabled, nickname, password, username, image_url)
-values ('test1@test.com', 1, 1, 1, 1, '람머스기니', 'test1', '람머스', 'https://cdn-icons-png.flaticon.com/512/14/14660.png'),
-       ('test2@test.com', 1, 1, 1, 1, '폭풍저그 홍진호가 간다!', 'test2', '홍진호', 'https://cdn-icons-png.flaticon.com/512/3135/3135789.png'),
-       ('test3@test.com', 1, 1, 1, 1, '간다 드래프트~!', 'test3', '형독',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-WUx40RcbMrWzkDttvsv2_JkDqm0UezjQWw&usqp=CAU'),
-       ('test4@test.com', 1, 1, 1, 1, '중다이', 'test4', '이중대',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoo3O4glz71CnZPaFx9A6m-NWPr34TVGwxC4n9rvDGWvOEa9R2ram0lE5Iqzkhy3vkPJM&usqp=CAU');
+insert into users(email, name, nickname, password, image_url)
+values ('test1@test.com', '람머스', '람머스기니', '$2a$10$W0IprVHIs2WJp47x7Q0z2.Myo5VCYUd//Dv1YfA8RyP0tttnsKjom', 'https://picsum.photos/id/100/300/300'),
+       ('test2@test.com', '홍진호', '폭풍저그 홍진호가 간다!', '$2a$10$W0IprVHIs2WJp47x7Q0z2.Myo5VCYUd//Dv1YfA8RyP0tttnsKjom',
+        'https://picsum.photos/id/101/300/300'),
+       ('test3@test.com', '형독', '간다 드래프트~!', '$2a$10$W0IprVHIs2WJp47x7Q0z2.Myo5VCYUd//Dv1YfA8RyP0tttnsKjom', 'https://picsum.photos/id/102/300/300'),
+       ('test4@test.com', '이중대', '중다이', '$2a$10$W0IprVHIs2WJp47x7Q0z2.Myo5VCYUd//Dv1YfA8RyP0tttnsKjom', 'https://picsum.photos/id/103/300/300');
+
+
+insert into user_roles(user_email, roles)
+values ('test1@test.com', 'USER'),
+       ('test2@test.com', 'USER'),
+       ('test3@test.com', 'USER'),
+       ('test4@test.com', 'USER');
 
 
 insert into article(title, content, author_email, picture_url, create_time, update_time)

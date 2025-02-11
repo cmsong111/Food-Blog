@@ -1,9 +1,8 @@
 package com.classy.instagram.article.dto;
 
 import com.classy.instagram.user.dto.UserDto;
-import lombok.Data;
-
 import java.sql.Timestamp;
+import lombok.Data;
 
 @Data
 public class ReplyDto {

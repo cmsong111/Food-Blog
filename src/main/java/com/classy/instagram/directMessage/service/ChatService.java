@@ -6,13 +6,12 @@ import com.classy.instagram.directMessage.repository.ChatMessageRepository;
 import com.classy.instagram.directMessage.repository.ChatRoomRepository;
 import com.classy.instagram.user.entity.User;
 import com.classy.instagram.user.repository.UserRepository;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ChatService {
