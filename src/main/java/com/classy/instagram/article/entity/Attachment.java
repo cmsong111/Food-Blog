@@ -2,7 +2,7 @@ package com.classy.instagram.article.entity;
 
 import com.classy.instagram.article.AttachmentType;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Attachment {

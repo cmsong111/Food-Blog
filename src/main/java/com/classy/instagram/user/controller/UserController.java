@@ -10,6 +10,8 @@ import com.classy.instagram.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,8 +20,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -102,7 +102,7 @@ public class UserController {
     @GetMapping("/profile/{email}")
     @Operation(summary = "프로필 페이지")
     @ApiResponse(responseCode = "200", description = "프로필 페이지")
-    public String profilePage(Model model, HttpSession session, @PathVariable String email) {
+    public String profilePage(Model model, @PathVariable String email) {
         log.info("profilePage GET 호출");
 
         UserDto user = userService.findById(email);
