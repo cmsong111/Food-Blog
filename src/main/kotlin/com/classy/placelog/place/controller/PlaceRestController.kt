@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/place")
 class PlaceRestController(
-    private val placeService: PlaceService
+    private val placeService: PlaceService,
 ) {
     @Operation(summary = "장소 목록 조회")
     @GetMapping
     fun getPlaceList(
         @PageableDefault(sort = ["createdAt"], direction = Sort.Direction.DESC)
-        @ParameterObject pageable: Pageable
+        @ParameterObject pageable: Pageable,
     ): Page<Place> {
         return placeService.getPlaceList(pageable)
     }

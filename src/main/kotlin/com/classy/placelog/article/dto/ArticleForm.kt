@@ -9,5 +9,5 @@ data class ArticleForm(
     /** 내용 */
     val content: String,
     /** 이미지 파일 */
-    val images: List<MultipartFile>? = null
+    val images: List<MultipartFile>? = null,
 )

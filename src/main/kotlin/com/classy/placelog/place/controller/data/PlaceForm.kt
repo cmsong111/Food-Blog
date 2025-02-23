@@ -11,5 +11,5 @@ data class PlaceForm(
     /** 장소 설명 */
     val description: String,
     /** 장소 썸네일 */
-    val thumbnail: MultipartFile? = null
+    val thumbnail: MultipartFile? = null,
 )

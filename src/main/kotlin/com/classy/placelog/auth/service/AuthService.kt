@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class AuthService(
     private val userRepository: UserRepository,
-    private val passwordEncoder: PasswordEncoder
+    private val passwordEncoder: PasswordEncoder,
 ) : UserDetailsService {
     /**
      * 스프링 시큐리티에서 사용할 로그인 메소드
@@ -38,7 +38,7 @@ class AuthService(
             password = signUpForm.password,
             name = signUpForm.name,
             nickname = signUpForm.nickname,
-            passwordEncoder = passwordEncoder
+            passwordEncoder = passwordEncoder,
         )
 
         return userRepository.save(user)

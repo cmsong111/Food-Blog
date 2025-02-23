@@ -7,5 +7,6 @@ import org.springframework.web.multipart.MultipartFile
  */
 interface StorageService {
     fun save(image: MultipartFile): String
+
     fun saveAll(images: List<MultipartFile>): List<String>
 }

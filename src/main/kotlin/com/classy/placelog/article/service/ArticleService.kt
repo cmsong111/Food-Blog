@@ -14,38 +14,28 @@ class ArticleService(
     private val articleRepository: ArticleRepository,
 ) {
     @Transactional(readOnly = true)
-    fun getArticles(
-        pageable: Pageable
-    ): Page<Article> {
+    fun getArticles(pageable: Pageable): Page<Article> {
         return articleRepository.findAll(pageable)
     }
 
     @Transactional(readOnly = true)
-    fun getArticle(
-        articleId: Long
-    ): Article {
+    fun getArticle(articleId: Long): Article {
         return articleRepository.findById(articleId)
             .orElseThrow { IllegalArgumentException("게시글이 존재하지 않습니다.") }
     }
 
     @Transactional
-    fun createArticle(
-
-    ): Article {
+    fun createArticle(): Article {
         TODO("Not yet implemented")
     }
 
     @Transactional
-    fun updateArticle(
-
-    ): Article {
+    fun updateArticle(): Article {
         TODO("Not yet implemented")
     }
 
     @Transactional
-    fun deleteArticle(
-
-    ) {
+    fun deleteArticle() {
         TODO("Not yet implemented")
     }
 }

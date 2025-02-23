@@ -11,5 +11,5 @@ data class SignUpForm(
     val email: String,
     val password: String,
     val name: String,
-    val nickname: String
+    val nickname: String,
 )

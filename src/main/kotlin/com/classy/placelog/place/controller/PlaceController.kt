@@ -26,7 +26,7 @@ class PlaceController(
     @GetMapping("/place/{id}")
     fun placeDetail(
         @PathVariable id: Long,
-        model: Model
+        model: Model,
     ): String {
         val place: Place = placeService.getPlace(id)
         model.addAttribute("place", place)
@@ -37,7 +37,7 @@ class PlaceController(
     fun getPlaceEditPage(
         @PathVariable id: Long,
         @AuthenticationPrincipal userDetails: UserDetails,
-        model: Model
+        model: Model,
     ): String {
         val place: Place = placeService.getPlace(id)
         model.addAttribute("place", place)
@@ -49,7 +49,7 @@ class PlaceController(
         @PathVariable id: Long,
         @AuthenticationPrincipal userDetails: UserDetails,
     ): String {
-        return "redirect:/place/${id}"
+        return "redirect:/place/$id"
     }
 
     @PostMapping("/place/{id}/delete")
@@ -60,7 +60,6 @@ class PlaceController(
     ): String {
         TODO("Not yet implemented")
     }
-
 
     @GetMapping("/place-create")
     fun createPlace(model: Model): String {

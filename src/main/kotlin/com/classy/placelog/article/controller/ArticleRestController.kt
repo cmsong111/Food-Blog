@@ -23,7 +23,7 @@ class ArticleRestController(
     @Operation(summary = "게시글 목록 조회")
     fun getArticles(
         @PageableDefault(sort = ["createdAt"], direction = Sort.Direction.DESC)
-        @ParameterObject pageable: Pageable
+        @ParameterObject pageable: Pageable,
     ): Page<Article> {
         return articleService.getArticles(pageable)
     }

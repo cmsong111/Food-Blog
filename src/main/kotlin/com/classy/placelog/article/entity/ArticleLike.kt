@@ -19,6 +19,4 @@ class ArticleLike(
         @ManyToOne(fetch = FetchType.LAZY)
         val author: User,
     )
-
 }
-

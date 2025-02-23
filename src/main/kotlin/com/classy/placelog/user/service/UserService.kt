@@ -15,7 +15,6 @@ class UserService(
     private val userRepository: UserRepository,
     private val storageService: StorageService,
 ) {
-
     @Transactional(readOnly = true)
     fun getUser(email: String): User {
         return userRepository.findById(email)
@@ -32,15 +31,17 @@ class UserService(
         user.update(
             name = userForm.name,
             nickname = userForm.nickname,
-            imageUrl = profileImage
+            imageUrl = profileImage,
         )
 
         return user
     }
 
     @Transactional(readOnly = true)
-    fun findUser(keywords: String, pageable: Pageable): Page<User> {
+    fun findUser(
+        keywords: String,
+        pageable: Pageable,
+    ): Page<User> {
         return userRepository.findByNicknameContains(keywords, pageable)
     }
-
 }

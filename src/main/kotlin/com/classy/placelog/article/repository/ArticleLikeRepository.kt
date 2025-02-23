@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface ArticleLikeRepository : JpaRepository<ArticleLike, ArticleLike.ArticleLikeId> {
-
     /**
      * 게시글 별 좋아요 수 조회
      * @param id 게시글 ID
@@ -21,14 +20,20 @@ interface ArticleLikeRepository : JpaRepository<ArticleLike, ArticleLike.Article
      * @param id 게시글 ID
      * @param email 사용자 이메일
      */
-    fun existsByIdArticleIdAndIdAuthorEmail(id: Long, email: String): Boolean
+    fun existsByIdArticleIdAndIdAuthorEmail(
+        id: Long,
+        email: String,
+    ): Boolean
 
     /**
      * 좋아요 검색
      * @param id 게시글 ID
      * @param email 사용자 이메일
      */
-    fun findByIdArticleIdAndIdAuthorEmail(id: Long, email: String): ArticleLike
+    fun findByIdArticleIdAndIdAuthorEmail(
+        id: Long,
+        email: String,
+    ): ArticleLike
 
     /**
      * 좋아요 수 동기화
@@ -44,7 +49,7 @@ interface ArticleLikeRepository : JpaRepository<ArticleLike, ArticleLike.Article
             WHERE l.id.article.id = :id
         )
         WHERE a.id = :id
-        """
+        """,
     )
     fun syncLikeCount(id: Long)
 }

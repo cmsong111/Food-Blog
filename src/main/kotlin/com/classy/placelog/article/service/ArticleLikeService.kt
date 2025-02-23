@@ -19,7 +19,7 @@ class ArticleLikeService(
     @Transactional
     fun likeArticle(
         articleId: Long,
-        userId: String
+        userId: String,
     ): Long {
         val user: User = userRepository.findByIdOrNull(userId)
             ?: throw IllegalArgumentException("User not found")
@@ -31,7 +31,7 @@ class ArticleLikeService(
             id = ArticleLike.ArticleLikeId(
                 article = article,
                 author = user,
-            )
+            ),
         )
 
         articleLikeRepository.save(articleLike)
@@ -42,11 +42,11 @@ class ArticleLikeService(
     @Transactional
     fun unlikeArticle(
         articleId: Long,
-        userId: String
+        userId: String,
     ): Long {
         val articleLike: ArticleLike = articleLikeRepository.findByIdArticleIdAndIdAuthorEmail(
             id = articleId,
-            email = userId
+            email = userId,
         )
 
         articleLikeRepository.delete(articleLike)
@@ -57,11 +57,11 @@ class ArticleLikeService(
     @Transactional(readOnly = true)
     fun isLiked(
         articleId: Long,
-        userId: String
+        userId: String,
     ): Boolean {
         return articleLikeRepository.existsByIdArticleIdAndIdAuthorEmail(
             id = articleId,
-            email = userId
+            email = userId,
         )
     }
 }

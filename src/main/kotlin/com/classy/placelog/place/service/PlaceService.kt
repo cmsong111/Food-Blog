@@ -44,7 +44,7 @@ class PlaceService(
         val place = Place(
             name = placeForm.name,
             description = placeForm.description,
-            thumbnail = thumbnailUrl ?: "https://picsum.photos/id/1/1000"
+            thumbnail = thumbnailUrl ?: "https://picsum.photos/id/1/1000",
         )
         return placeRepository.save(place)
     }
@@ -58,7 +58,7 @@ class PlaceService(
     @Transactional
     fun updatePlace(
         placeId: Long,
-        placeForm: PlaceForm
+        placeForm: PlaceForm,
     ): Place {
         val place = placeRepository.findByIdOrNull(placeId)
             ?: throw IllegalArgumentException("해당 ID의 장소가 존재하지 않습니다. id=$id")

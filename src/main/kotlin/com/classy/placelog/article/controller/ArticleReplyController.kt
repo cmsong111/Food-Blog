@@ -1,20 +1,17 @@
 package com.classy.placelog.article.controller
 
-import com.classy.placelog.article.service.ArticleLikeService
 import io.swagger.v3.oas.annotations.Hidden
-import java.nio.file.attribute.UserPrincipal
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import java.nio.file.attribute.UserPrincipal
 
 @Hidden
 @Controller
 @RequestMapping("articles/{articleId}/reply")
-class ArticleReplyController (
-
-){
+class ArticleReplyController() {
     @PostMapping
     fun createReply(
         @PathVariable articleId: Long,

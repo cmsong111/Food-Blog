@@ -16,5 +16,4 @@ data class UserForm(
     val nickname: String,
     /** 프로필 이미지 */
     val profile: MultipartFile? = null,
-) {
-}
+)

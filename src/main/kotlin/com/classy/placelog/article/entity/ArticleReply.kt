@@ -21,5 +21,4 @@ class ArticleReply(
     val article: Article,
     @ManyToOne(fetch = FetchType.LAZY)
     val author: User,
-) : BaseEntity() {
-}
+) : BaseEntity()

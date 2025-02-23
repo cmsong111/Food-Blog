@@ -16,7 +16,6 @@ interface ArticleRepository : JpaRepository<Article, Long> {
      */
     fun findAllByAuthorEmail(email: String): List<Article>
 
-
     /**
      * 게시글 검색 기능
      * 제목과 내용중에 해당 키워드가 포함된 게시글을 검색한다.
@@ -29,7 +28,10 @@ interface ArticleRepository : JpaRepository<Article, Long> {
         from Article a 
         where a.title like concat('%', ?1, '%') 
         or a.content like concat('%', ?1, '%')
-        """
+        """,
     )
-    fun findArticleByKeywords(title: String?, pageable: Pageable): Page<Article>
+    fun findArticleByKeywords(
+        title: String?,
+        pageable: Pageable,
+    ): Page<Article>
 }

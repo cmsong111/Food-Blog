@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/article/{articleId}/like")
 @SecurityRequirement(name = SwaggerConfig.BASIC_AUTH)
 class ArticleLikeRestController(
-    private val articleLikeService: ArticleLikeService
+    private val articleLikeService: ArticleLikeService,
 ) {
     @PostMapping
     fun likeArticles(

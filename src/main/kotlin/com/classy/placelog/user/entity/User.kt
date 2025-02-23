@@ -32,7 +32,7 @@ class User(
     var imageUrl: String = "https://picsum.photos/id/237/300/300",
     @Enumerated(value = EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
-    var roles: MutableSet<UserRole> = mutableSetOf(UserRole.USER)
+    var roles: MutableSet<UserRole> = mutableSetOf(UserRole.USER),
 ) : UserDetails, BaseEntity() {
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
         return roles
@@ -62,7 +62,10 @@ class User(
         imageUrl?.let { this.imageUrl = it }
     }
 
-    fun updatePassword(password: String, passwordEncoder: PasswordEncoder) {
+    fun updatePassword(
+        password: String,
+        passwordEncoder: PasswordEncoder,
+    ) {
         this.password = passwordEncoder.encode(password)
     }
 

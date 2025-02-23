@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
 class AuthController(
-    private val authService: AuthService
+    private val authService: AuthService,
 ) {
     /**
      * 로그인 페이지
@@ -24,9 +24,7 @@ class AuthController(
      * 회원가입 페이지
      */
     @GetMapping("/signup")
-    fun signupPage(
-        model: Model
-    ): String {
+    fun signupPage(model: Model): String {
         model.addAttribute("signUpForm", SignUpForm("", "", "", ""))
         return "auth/signup"
     }
@@ -35,7 +33,9 @@ class AuthController(
      * 회원가입 Process
      */
     @PostMapping("/signup")
-    fun signup(@ModelAttribute signUpForm: SignUpForm): String {
+    fun signup(
+        @ModelAttribute signUpForm: SignUpForm,
+    ): String {
         val user = authService.signup(signUpForm)
         // Session에 저장
         SecurityContextHolder.getContext().authentication = UsernamePasswordAuthenticationToken(user, user.password, user.authorities)

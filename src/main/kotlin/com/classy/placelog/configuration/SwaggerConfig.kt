@@ -12,14 +12,14 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class SwaggerConfig(
-    private val gitProperties: GitProperties
+    private val gitProperties: GitProperties,
 ) {
     @Bean
     fun openAPI(): OpenAPI {
         return OpenAPI().components(
             Components().apply {
                 addSecuritySchemes(BASIC_AUTH, sessionSecurity())
-            }
+            },
         ).info(info())
     }
 

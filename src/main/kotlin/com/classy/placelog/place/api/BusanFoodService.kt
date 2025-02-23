@@ -24,7 +24,7 @@ class BusanFoodService(
         .uriBuilderFactory(
             DefaultUriBuilderFactory().apply {
                 encodingMode = DefaultUriBuilderFactory.EncodingMode.NONE
-            }
+            },
         )
         .build()
 

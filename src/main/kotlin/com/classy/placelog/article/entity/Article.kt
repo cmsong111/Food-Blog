@@ -36,6 +36,5 @@ class Article(
     var replyCount: Long = 0L,
     /** 작성자 */
     @ManyToOne(fetch = FetchType.LAZY)
-    val author: User
-) : BaseEntity() {
-}
+    val author: User,
+) : BaseEntity()
