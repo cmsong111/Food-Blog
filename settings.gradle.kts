@@ -1,1 +1,1 @@
-rootProject.name = "food-blog"
+rootProject.name = "place-log"

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <title>장소 추가</title>
+</head>
+
+<div layout:fragment="content">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h2 class="mb-4 text-center">장소 추가</h2>
+                <form th:action="@{/place-create}" th:object="${placeForm}" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">장소 이름</label>
+                        <input type="text" id="name" class="form-control" th:field="*{name}" placeholder="장소 이름을 입력하세요" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">설명</label>
+                        <textarea id="description" class="form-control" th:field="*{description}" rows="4"
+                                  placeholder="장소 설명을 입력하세요"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="thumbnail" class="form-label">썸네일 이미지</label>
+                        <input type="file" id="thumbnail" class="form-control" th:field="*{thumbnail}" accept="image/*">
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">저장</button>
+                        <a href="/" class="btn btn-secondary">취소</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

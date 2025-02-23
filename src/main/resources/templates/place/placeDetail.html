@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+
+<head>
+    <title th:text="${place.name} + ' - Place Log'"></title>
+</head>
+
+<div layout:fragment="content" class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- 장소 정보 -->
+            <article>
+                <header class="mb-4">
+                    <h1 class="fw-bolder mb-1" th:text="${place.name}"></h1>
+                </header>
+                <figure class="mb-4">
+                    <img class="img-fluid rounded" th:src="${place.thumbnail}" width="100%" alt="이미지 없음"/>
+                </figure>
+                <section class="mb-5">
+                    <p class="fs-5" th:text="${place.description}"></p>
+                </section>
+            </article>
+
+<!--            &lt;!&ndash; 댓글 기능 &ndash;&gt;-->
+<!--            <section class="mb-5">-->
+<!--                <div class="card bg-light">-->
+<!--                    <div class="card-body">-->
+<!--                        <form class="mb-4">-->
+<!--                            <textarea class="form-control" id="reply-content" rows="3" placeholder="댓글을 입력하세요..."></textarea>-->
+<!--                        </form>-->
+<!--                        &lt;!&ndash; 댓글 목록 &ndash;&gt;-->
+<!--                        <div th:each="reply : ${place.replies}" class="d-flex mb-4">-->
+<!--                            <div class="d-flex align-items-center">-->
+<!--                                <img class="rounded-circle" th:src="${reply.user.imageUrl}" width="50px" height="50px" alt="...">-->
+<!--                                <div class="ms-3">-->
+<!--                                    <div class="fw-bold" th:text="${reply.user.nickname}"></div>-->
+<!--                                    <div class="text-muted" th:text="${reply.createTime}"></div>-->
+<!--                                    <p th:text="${reply.content}"></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </section>-->
+        </div>
+    </div>
+</div>
+
+</html>

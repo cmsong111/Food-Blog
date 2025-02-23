@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+
+<div layout:fragment="content">
+    <p th:text="${user.email}"></p>
+    <p th:text="${user.password}"></p>
+    <p th:text="${user.name}"></p>
+    <p th:text="${user.nickname}"></p>
+    <p th:text="${user.imageUrl}"></p>
+    <img th:src="${user.imageUrl}" alt="프로필 이미지">
+
+</div>
+</html>

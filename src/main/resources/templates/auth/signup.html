@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+
+<head>
+    <title>회원가입</title>
+</head>
+
+<body>
+<div layout:fragment="content" class="d-flex align-items-center justify-content-center vh-100 bg-light">
+    <div class="card shadow-sm p-4 rounded-4" style="max-width: 400px; width: 100%;">
+        <div class="text-center">
+            <img class="mb-3"
+                 src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
+                 alt="Bootstrap Logo"
+                 width="72" height="57">
+            <h2 class="fw-bold">회원가입</h2>
+        </div>
+
+        <form th:action="@{/signup}" th:object="${signUpForm}" method="post" class="mt-3">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control rounded-3" id="email"
+                       placeholder="name@example.com" th:field="*{email}" required>
+                <label for="email">이메일</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control rounded-3" id="password"
+                       placeholder="비밀번호" th:field="*{password}" required>
+                <label for="password">비밀번호</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-3" id="name"
+                       placeholder="이름" th:field="*{name}" required>
+                <label for="name">이름</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-3" id="nickname"
+                       placeholder="닉네임" th:field="*{nickname}" required>
+                <label for="nickname">닉네임</label>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2 rounded-3" type="submit">회원가입</button>
+
+            <div class="text-center mt-3">
+                <p class="mb-0">이미 계정이 있으신가요? <a href="/login" class="text-primary text-decoration-none">로그인</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

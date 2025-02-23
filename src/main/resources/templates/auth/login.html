@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}"
+>
+
+<div layout:fragment="content" class="d-flex align-items-center justify-content-center vh-100 bg-light">
+    <div class="card shadow-sm p-4 rounded-4" style="max-width: 380px; width: 100%;">
+        <div class="text-center">
+            <img class="mb-3"
+                 src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
+                 alt="Bootstrap Logo"
+                 width="72" height="57">
+            <h2 class="fw-bold">로그인</h2>
+        </div>
+
+        <form th:action="@{/login}" method="post" class="mt-3">
+            <!-- 로그인 실패 시 오류 메시지 표시 -->
+            <div th:if="${param.error}" class="alert alert-danger text-center" role="alert">
+                이메일 또는 비밀번호를 확인해주세요.
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control rounded-3" id="floatingInput"
+                       placeholder="name@example.com" name="email" required>
+                <label for="floatingInput">이메일 주소</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control rounded-3" id="floatingPassword"
+                       placeholder="Password" name="password" required>
+                <label for="floatingPassword">비밀번호</label>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="remember-me" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">
+                    로그인 상태 유지
+                </label>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2 rounded-3" type="submit">로그인</button>
+
+            <div class="text-center mt-3">
+                <a href="#" class="text-decoration-none">비밀번호를 잊으셨나요?</a>
+            </div>
+        </form>
+
+        <hr class="my-4">
+        <div class="text-center">
+            <p class="mb-0">계정이 없으신가요? <a th:href="@{signup}" class="text-primary text-decoration-none">회원가입</a></p>
+        </div>
+    </div>
+</div>
+
+</html>

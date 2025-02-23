@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html
+        lang="ko"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/default}">
+<head>
+    <title>Place Log</title>
+</head>
+
+<div layout:fragment="content">
+
+    <script src="/js/place.js"></script>
+    <style>
+        img {
+            object-fit: cover;
+        }
+    </style>
+    <div class="container">
+        <div class="row" id="place-list">
+            <div class="d-flex justify-content-end my-3">
+                <a href="/place-create" class="btn btn-primary">
+                    장소 추가
+                </a>
+            </div>
+            <!-- 여기에 JS로 아이템 추가 -->
+        </div>
+    </div>
+</div>
+
+</html>
